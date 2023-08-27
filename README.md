@@ -1,6 +1,6 @@
 # Projeto Final SI401 - Prog. WEB
 
-Projeto desenvolvido ao longo do segundo semestre de 2021 para a disciplina de SI401 - Programação para WEB,
+Projeto desenvolvido ao longo do segundo semestre de 2023 para a disciplina de SI401 - Programação para WEB,
 o projeto consiste em 3 entregas ao longo do semestre:
 
 1. Front-end: toda a parte estática de front-end, com definição de layout e estilização das páginas, além de
