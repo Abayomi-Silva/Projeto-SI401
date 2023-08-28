@@ -1,5 +1,5 @@
 /* Sem margens no html e body */
-body, html {
+body, html , p{
     margin: 0;
     padding: 0;
 }
@@ -28,7 +28,6 @@ body, html {
     width: 100%;
     text-align: center;
     color: white;
-    
 }
 /* Estilo do formulario */
 form {
@@ -41,11 +40,10 @@ form {
 .botao{
     place-items: center;
     color: #1A258B;
-    padding: 4px;
 }
 .btn{
     width: 200px;
-    height: 35px;
+    height: 40px;
     font-size: 22px;
     background-color: #1A258B;
     color: rgb(255, 255, 255);
