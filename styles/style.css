@@ -9,7 +9,7 @@
 
 .input-form{
     width: 380px;
-    height: 18px;
+    height: 16px;
     align-content: center;
     padding: 5px 10px 5px 10px;
     text-align: center;
@@ -19,8 +19,8 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 #logoMenor {
-    width: 40vw ;
-    height: 25vh;
+    width: 36vw ;
+    height: 22vh;
     border-radius: 10px;
     text-align: center;
 }
@@ -34,3 +34,8 @@ input[disabled] {
 .fa-lock{
     color: rgb(255, 0, 0);
 }
+p {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+  }

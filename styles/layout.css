@@ -3,7 +3,6 @@ body, html {
     margin: 0;
     padding: 0;
 }
-
 /* Estilo para o fundo */
 .background {
     position: fixed;
@@ -16,7 +15,6 @@ body, html {
     opacity: 0.4; 
     z-index: -1; /* Imagem ao fundo */
 }
-
 /* Estilos gerais para o conteúdo */
 .container {
     min-width: 280px;
@@ -30,8 +28,8 @@ body, html {
     width: 100%;
     text-align: center;
     color: white;
+    
 }
-
 /* Estilo do formulario */
 form {
     display: flex;
@@ -39,11 +37,11 @@ form {
     align-items: center;
     margin-bottom: 10px;
 }
-
 /* Padronizando os botões */
 .botao{
     place-items: center;
     color: #1A258B;
+    padding: 4px;
 }
 .btn{
     width: 200px;
@@ -56,7 +54,6 @@ form {
     margin: 15px 1px 2px;
     text-decoration: none;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
 }
 .btn:hover{
     cursor: grab;

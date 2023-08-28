@@ -1,0 +1,41 @@
+.menu {
+    background-color: #000000;
+    color: white;
+    border-radius: 10px;
+    margin: 10px 3px 3px;
+}
+
+body .pop-up{
+    width: 50vw;
+    height:60vh;  
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.pop-up{
+    background-color: #040C52;
+    width: 55%;
+    height: 25%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.info,p{
+    font-size: 25px;
+    text-align: center;
+    color: #f0f0f0;
+    align-items: center;
+    align-content: center;
+   
+    padding: 10px;
+}
+.label{
+    align-content: center;
+    border: 1px solid;
+    margin: 10px;
+    border-radius: 10px;
+    width: 30%;
+    
+}
+.lbl{
+    padding: 3px 25px;
+    background-color: #121B6D;
+}
