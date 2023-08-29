@@ -6,7 +6,7 @@
 }
 body .pop-up{
     width: 50vw;
-    height: 55vh;  
+    height: 60vh;  
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .pop-up{
@@ -27,13 +27,55 @@ body .pop-up{
 .lbl{
     color: #ffffff;
     background-color: #1A258B;
-    padding: 0px;
+    padding: 5px 15px;
 }
 #logout{
     background-color: #6572E3; 
 }
 .checkboxes {
     background-color: #1A258B;
-    margin: 20px 60px;
+    margin: 12px 110px;
     border-radius: 10px;
+}
+.toggle {
+   color: #ffffff;
+   padding: 0px 5px 6px 15px;
+}
+.toggle > input {
+    display: none;
+}
+.toggle > label {
+    right: -20px;
+    position: relative;
+    display: inline-flex;
+    height: 20px;
+    width: 54px;
+    background: #e00f0f;
+    border-radius: 100px;
+    cursor: pointer;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+.toggle > label:after {
+    position: absolute;
+    left: -2px;
+    top: -3px;
+    display: block;
+    width: 29px;
+    height: 26px;
+    border-radius: 100px;
+    background: #ebdfdf;
+    box-shadow: 0px 3px 3px rgba(0,0,0,0.05);
+    content: '';
+    transition: all 0.3s ease;
+}
+.toggle > label:active:after {
+    transform: scale(1.15, 0.85);
+}
+.toggle > input:checked ~ label {
+    background: #02ee5c;
+}
+.toggle > input:checked ~ label:after {
+    left: 28px;
+    background: #ebdfdf;
 }

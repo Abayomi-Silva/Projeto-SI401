@@ -6,27 +6,26 @@
     border-radius: 10px;
     align-items: center;
 }
-.input-form{
-    width: 370px;
-    height: 18px;
-    align-content: center;
-    padding: 3px 10px 3px 10px;
-    text-align: center;
-    font-size: 20px;
-    margin: 5px 1px 5px;
-    border-radius: 10px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
 #logoMenor {
     width: 36vw ;
     height: 24vh;
     border-radius: 10px;
     text-align: center;
 }
+.input-form{
+    width: 370px;
+    height: 18px;
+    align-content: center;
+    padding: 3px 10px;
+    text-align: center;
+    font-size: 20px;
+    margin: 5px 1px;
+    border-radius: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 input[disabled] {
     background-color: #f7f7f7;
     cursor: not-allowed;
-    color: #b1a1a1;
     width: 360px;
     height: 18px;
 }

@@ -41,19 +41,21 @@ form {
     place-items: center;
     color: #1A258B;
 }
-.btn{
+.button {
+    align-content: center;
     width: 200px;
     height: 40px;
     font-size: 22px;
     background-color: #1A258B;
-    color: rgb(255, 255, 255);
+    color: white;
+    display: inline-grid;
     border-radius: 10px;
-    padding: 2px 2px 2px 2px;
+    padding: 2px;
     margin: 15px 1px 2px;
     text-decoration: none;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-.btn:hover{
-    cursor: grab;
+.button:hover {
     background-color: #0e6ead;
+    cursor: grab;
 }

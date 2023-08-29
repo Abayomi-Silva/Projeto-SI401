@@ -7,32 +7,35 @@
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/pop_up.css">
     <link rel="icon" href="images/logo.ico">
-
+    
     <title>Tetris</title>
 </head>
 <body>
-    
+
     <div class="pop-up">
         <div class="menu">
             <h1>MENU</h1>
         </div>
             <div class="checkboxes">
                 <p>Modo de Jogo</p>
-                <label class="lbl">Clássico
-                    <input type="checkbox" class="checkbox" name="opcao1">
-                </label>
-                <label class="lbl">Avançado
-                    <input type="checkbox" class="checkbox" name="opcao2">
-                </label>
+                <div class="toggle">
+                    <div class="toggle">
+                        <input type="checkbox" id="bar" checked>Clássico
+                        <label for="bar">ON OFF</label>
+                    </div>
+                    <input type="checkbox" id="foo">Avançado
+                    <label for="foo">ON OFF</label>
+                </div>
             </div>
+
             <div class="botao">
                 <div>
-                    <button class="btn">Ranking Pessoal</button>
+                    <a href="ranking_pessoal" class="button">Ranking Pessoal</a>
                 </div>
                 <div>
-                    <a href="editar_perfil.html"><button class="btn">Editar Perfil</button></a>
+                    <a href="editar_perfil.html" class="button">Editar Perfil</a>
                 </div>
-                <a href="login.html"><button class="btn" id="logout">Logout</button></a>
+                <a href="login.html" class="button" id="logout">Logout</a>
             </div>
     </div>
     
