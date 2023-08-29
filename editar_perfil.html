@@ -1,64 +1,76 @@
 <!DOCTYPE html>
 <html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/layout.css">
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="icon" href="images/logo.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./styles/layout.css">
+        <link rel="stylesheet" href="./styles/style.css">
+        <link rel="icon" href="images/logo.ico">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <style>
         .background {
             background-image: url('./images/background.gif');
         }  
     </style>
-    
-    <title>Tetris</title>
-</head>
-<body>
 
-    <div class="background"></div>
-    <div class="container">
-        <div class="logo">
-            <img src="./images/logo.jpg" id="logoMenor" alt="logo tetris">
-        </div>
+        <title>Tetris</title>
+    </head>
+    <body>
+
+        <div class="background"></div>
+        <div class="container">
+            <div class="logo">
+                <img src="./images/logo.jpg" id="logoMenor" alt="logo tetris">
+            </div>
             <div class="login">
                 <form>
-                 <div class="form-group">
-                        <input type="text" class="input-form" id="nome" name="nome" placeholder="Nome Completo" required>
+                    <div class="form-group">
+                        <input type="text" class="input-form" id="nome"
+                            name="nome" placeholder="Nome Completo" required>
                     </div>
                     <div class="locked">
-                        <input type="text" class="input-form" id="dataNascimento" name="dataNascimento" placeholder="Data de Nascimento" disabled>
+                        <input type="text" class="input-form"
+                            id="dataNascimento" name="dataNascimento"
+                            placeholder="Data de Nascimento" disabled>
                         <span class="icon"><i class="fas fa-lock"></i></span>
                     </div>
                     <div class="locked">
-                        <input type="text" class="input-form" id="cpf" name="cpf" placeholder="CPF" disabled>
+                        <input type="text" class="input-form" id="cpf"
+                            name="cpf" placeholder="CPF" disabled>
                         <span class="icon"><i class="fas fa-lock"></i></span>
                     </div>
                     <div class="form-group">
-                        <input type="tel" class="input-form" id="telefone" name="telefone" placeholder="Telefone" required>
+                        <input type="tel" class="input-form" id="telefone"
+                            name="telefone" placeholder="Telefone" required>
                     </div>
                     <div class="form-group">
-                    <input type="email" class="input-form" id="email" name="email" placeholder="E-mail" required>
+                        <input type="email" class="input-form" id="email"
+                            name="email" placeholder="E-mail" required>
                     </div>
                     <div class="locked">
-                        <input type="text" class="input-form" id="usuario" name="usuario" placeholder="Usuário" disabled>
+                        <input type="text" class="input-form" id="usuario"
+                            name="usuario" placeholder="Usuário" disabled>
                         <span class="icon"><i class="fas fa-lock"></i></span>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="input-form" id="senha" name="senha" placeholder="Senha" required>
+                        <input type="password" class="input-form" id="senha"
+                            name="senha" placeholder="Senha" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="input-form" id="confirmarSenha" name="confirmarSenha" placeholder="Confirmar Senha" required>
-                    </div>       
-                    <div class="botao"> 
-                        <input type="submit" class="button" id="atualizar" value="Atualizar"> 
+                        <input type="password" class="input-form"
+                            id="confirmarSenha" name="confirmarSenha"
+                            placeholder="Confirmar Senha" required>
+                    </div>
+                    <div class="botao">
+                        <input type="submit" class="button" id="atualizar"
+                            value="Atualizar">
                     </div>
                 </form>
-                <div class="botao"> 
-                    <a href="menu.html" class="button">Voltar</a> 
+                <div class="botao">
+                    <a href="menu.html" class="button">Voltar</a>
                 </div>
             </div>
-    </div>
-</body>
+        </div>
+    </body>
 </html>
