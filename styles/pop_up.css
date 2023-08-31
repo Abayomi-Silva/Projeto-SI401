@@ -7,8 +7,10 @@
 
 .pop-up{
     background-color: #040C52;
-    border-radius: 10px;
     text-align: center;
+    display: inline-block;
+    border-radius: 10px;
+    width: 270px;
 }
 .info,p{
     font-size: 25px;
@@ -42,7 +44,6 @@
 .toggle > label {
     right: -20px;
     position: relative;
-    display: inline-flex;
     height: 20px;
     width: 54px;
     background: #e00f0f;
