@@ -4,15 +4,9 @@
     border-radius: 10px;
     margin: 10px 3px 3px;
 }
-body .pop-up{
-    width: 50vw;
-    height: 65vh;  
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
+
 .pop-up{
     background-color: #040C52;
-    width: 55%;
-    height: 25%;
     border-radius: 10px;
     text-align: center;
 }
@@ -34,12 +28,13 @@ body .pop-up{
 }
 .checkboxes {
     background-color: #1A258B;
-    margin: 12px 110px;
+    display: inline-block;
     border-radius: 10px;
+    width: 100%;
 }
 .toggle {
    color: #ffffff;
-   padding: 0px 5px 6px 15px;
+   margin: 1px 1px 6px;
 }
 .toggle > input {
     display: none;
