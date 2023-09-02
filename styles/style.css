@@ -1,31 +1,38 @@
 .logo img {
     width: 45vw;
     height: 50vh;
-    margin-bottom: 5px;
-    margin-top: 5px;
+    margin: 7px 1px 2px;
+    padding-bottom: 30px;
     border-radius: 10px;
     align-items: center;
 }
 #logoMenor {
     width: 36vw ;
-    height: 24vh;
+    height: 29vh;
     border-radius: 10px;
     text-align: center;
 }
 .input-form{
-   height: 16px;
-    padding: 3px 10px;
+    height: 15px;
+    width: 30vw;
+    padding: 4px 100px;
     text-align: center;
     font-size: 20px;
-    margin: 5px 1px;
+    margin: 2px 1px 7px;
     border-radius: 10px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 input[disabled] {
     background-color: #f7f7f7;
     cursor: not-allowed;
-    width: 360px;
+    width: 30vw;
     height: 18px;
+    margin-left: 15px;
+    float: left;
+}
+.locked{
+    align-items: center;
+    display: inline-flex;
 }
 .fa-lock{
     color: rgb(255, 0, 0);

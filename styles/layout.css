@@ -1,8 +1,14 @@
-/* Sem margens no html e body */
+/* Estilos do html, body e parágrafos */
 body, html , p{
     margin: 0;
     padding: 0;
     text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+section {
+    height: 100vh;
+    width: 100vw;
+    
 }
 /* Estilo para o fundo */
 .background {
@@ -38,9 +44,8 @@ form {
     display: inline-grid;
     border-radius: 10px;
     padding: 2px;
-    margin: 15px 1px 2px;
+    margin: 5px;
     text-decoration: none;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .button:hover {
     background-color: #0e6ead;

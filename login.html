@@ -17,29 +17,26 @@
     </head>
 
     <body>
-
-        <div class="background"></div>
-
-        <div class="container">
-            <div class="logo">
-                <img src="./images/logo.jpg" alt="logo tetris">
+        <section>
+            <div class="background"></div>
+            <div class="container">
+                <div class="logo">
+                    <img src="./images/logo.jpg" alt="logo tetris">
+                </div>
+                <div class="login">
+                    <form>
+                        <input type="text" class="input-form" id="usuario"
+                            name="input" placeholder="Usuário" required>
+                        <input type="password" class="input-form" id="senha"
+                            name="input" placeholder="Senha" required>
+                        <input type="submit" class="button" id="enviar"
+                            value="Enviar">
+                    </form>
+                </div>
+                <div class="botao">
+                    <a href="cadastro.html" class="button">Cadastrar</a>
+                </div>
             </div>
-
-            <div class="login">
-                <form>
-                    <input type="text" class="input-form" id="usuario"
-                        name="input" placeholder="Usuário" required>
-                    <input type="password" class="input-form" id="senha"
-                        name="input" placeholder="Senha" required>
-                    <input type="submit" class="button" id="enviar"
-                        value="Enviar">
-                </form>
-            </div>
-
-            <div class="botao">
-                <a href="cadastro.html" class="button">Cadastrar</a>
-            </div>
-        </div>
-
+        </section>
     </body>
 </html>

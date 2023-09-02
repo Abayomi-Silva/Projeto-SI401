@@ -11,33 +11,33 @@
         <title>Tetris</title>
     </head>
     <body>
-
-        <div class="pop-up">
-            <div class="menu">
-                <h1>MENU</h1>
-            </div>
-            <div class="checkboxes">
-                <p>Modo de Jogo</p>
-                <div class="toggle">
+        <section>
+            <div class="pop-up">
+                <div class="menu">
+                    <h1>MENU</h1>
+                </div>
+                <div class="checkboxes">
+                    <p>Modo de Jogo</p>
                     <div class="toggle">
-                        <input type="checkbox" id="bar" checked>Clássico
-                        <label for="bar">ON OFF</label>
+                        <div class="toggle">
+                            <input type="checkbox" id="bar" checked>Clássico
+                            <label for="bar">ON OFF</label>
+                        </div>
+                        <input type="checkbox" id="foo">Avançado
+                        <label for="foo">ON OFF</label>
                     </div>
-                    <input type="checkbox" id="foo">Avançado
-                    <label for="foo">ON OFF</label>
+                </div>
+                <div class="botao">
+                    <div>
+                        <a href="ranking_pessoal" class="button">Ranking Pessoal</a>
+                    </div>
+                    <div>
+                        <a href="editar_perfil.html" class="button">Editar
+                            Perfil</a>
+                    </div>
+                    <a href="login.html" class="button" id="logout">Logout</a>
                 </div>
             </div>
-
-            <div class="botao">
-                <div>
-                    <a href="ranking_pessoal" class="button">Ranking Pessoal</a>
-                </div>
-                <div>
-                    <a href="editar_perfil.html" class="button">Editar Perfil</a>
-                </div>
-                <a href="login.html" class="button" id="logout">Logout</a>
-            </div>
-        </div>
-
+        </section>
     </body>
 </html>
