@@ -45,3 +45,18 @@ form {
     background-color: #0e6ead;
     cursor: grab;
 }
+.container ul{
+    list-style-type: none;
+    background-color: #1A258B;
+    display: inline-block;
+    border-radius: 10px;
+    width: 85%; 
+    
+}
+.pop-up2{
+    background-color: #040C52;
+    text-align: center;
+    display: inline-block;
+    border-radius: 10px;
+    width: 400px;
+}
