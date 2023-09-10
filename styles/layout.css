@@ -1,29 +1,27 @@
-/* Estilos do html, body e parágrafos */
-body, html , p{
+html, body, p{
     margin: 0;
     padding: 0;
     text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-/* Estilo para o fundo */
+.container{
+    height: 100vh;
+}
 .background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: cover;
     opacity: 0.4; 
-    z-index: -1; /* Imagem ao fundo */
+    z-index: -1;
 }
-/* Estilo do formulario */
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 10px;
 }
-/* Padronizando os botões */
 .botao{
     place-items: center;
     color: #1A258B;
@@ -50,13 +48,5 @@ form {
     background-color: #1A258B;
     display: inline-block;
     border-radius: 10px;
-    width: 85%; 
-    
-}
-.pop-up2{
-    background-color: #040C52;
-    text-align: center;
-    display: inline-block;
-    border-radius: 10px;
-    width: 400px;
+    width: 85%;  
 }
