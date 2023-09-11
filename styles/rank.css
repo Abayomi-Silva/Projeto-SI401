@@ -7,7 +7,6 @@ html, body, p{
 .container{
     height: 100vh;
 }
-
 .background {
     position: fixed;
     top: 0;
@@ -18,39 +17,45 @@ html, body, p{
     z-index: -1; 
 }
 .table{
-    background-color: #979cc7;
+    background-color: #6b74c3;
     display: inline-block;
     border-radius: 10px;
     width: 86vw;
-    height: 65vw;
 }
 table {
-width: 100%;
-border-collapse: collapse;
-background-color: silver;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: silver;
 }
 th, td {
-padding: 5px;
-text-align: center;
-border-bottom: 1px solid #ddd;
+    padding: 4px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
 }
 th {
-background-color: #f2f2f2;
+    background-color: #ecc0c0;
 }
 tr:nth-child(even) {
-background-color: #f2f2f2;
+    background-color: #f2f2f2;
 }
 nav{
-float: left;
-width: 50%;
-align-items: center;
-display: table;
+    float: left;
+    width: 50%;
+    align-items: center;
+    display: table;
 }
 h1{
     background-color: darkgrey;
     color: black;
     border-radius: 50px;
     width: 55vw;
+    display: inherit;
+}
+h2{
+    background-color: darkgrey;
+    color: black;
+    border-radius: 50px;
+    width: 20vw;
     display: inherit;
 }
 .botao{
@@ -65,7 +70,7 @@ h1{
 }
 .button {
     align-content: center;
-    width: 200px;
+    width: 285px;
     height: 40px;
     font-size: 22px;
     background-color: #1A258B;
@@ -78,7 +83,7 @@ h1{
 }
 .btrank {
     align-content: center;
-    width: 200px;
+    width: 285px;
     height: 40px;
     font-size: 22px;
     background-color: #6572E3;
