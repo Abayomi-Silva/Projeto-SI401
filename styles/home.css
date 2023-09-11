@@ -61,10 +61,6 @@ html, body, p{
     padding: 10px;
     text-align: center;
 }
-img {
-    max-width: 100%;
-    height: auto;
-}
 h2{
     color: #f0f0f0;
     height: 9%;
@@ -83,8 +79,8 @@ p{
 .button {
     align-content: center;
     width: 300px;
-    height: 40px;
-    font-size: 22px;
+    height: 45px;
+    font-size: 25px;
     background-color: #1A258B;
     color: white;
     display: inline-grid;
@@ -93,13 +89,17 @@ p{
     margin: 25px 5px 25px 5px;
     text-decoration: none;
 }
+.button:hover {
+    background-color: #0e6ead;
+    cursor: grab;
+}
 #logo{
     width: 20vw;
     height: 23vh;
     margin-bottom: 20px;
 }
 #tetris{
-    width: 40vw;
+    width: 45vw;
     height: 99vh;
 }
 #proxbloc{
@@ -109,9 +109,10 @@ p{
     border-radius: 85px;
     width: 7vw;
     margin-bottom: 10px;
+    cursor: grab;
 }
 #controles{
-    width: 15vw;
-    height: 15vh;
+    width: 18vw;
+    height: 16vh;
     margin-top: 20px;
 }

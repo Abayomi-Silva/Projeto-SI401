@@ -81,6 +81,10 @@ h2{
     margin: 5px;
     text-decoration: none;
 }
+.button:hover {
+    background-color: #0e6ead;
+    cursor: grab;
+}
 .btrank {
     align-content: center;
     width: 285px;

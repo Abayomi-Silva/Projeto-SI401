@@ -2,7 +2,7 @@
     background-color: #000000;
     color: white;
     border-radius: 10px;
-    margin: 10px 3px 3px;
+    margin: -20px 3px 3px 3px;
 }
 .pop-up{
     background-color: #040C52;
@@ -12,17 +12,15 @@
     width: 270px;
 }
 .info,p{
-    font-size: 25px;
-    text-align: center;
+    font-size: 24px;
     color: #f0f0f0;
-    align-items: center;
-    align-content: center;
-    padding: 10px;
+    padding: 3px;
 }
 .lbl{
     color: #ffffff;
     background-color: #1A258B;
-    padding: 5px 15px;
+    padding: 3px 30px;
+    border-radius: 10px;
 }
 #logout{
     background-color: #6572E3; 
@@ -74,3 +72,13 @@
     left: 30px;
     background: #ebdfdf;
 }
+img#sair{
+    width: 30px;
+    height: 30px;
+    border-radius: 30px; 
+    
+ }
+ a{
+     display: flex;
+     flex-direction: row-reverse;
+ }
