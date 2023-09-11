@@ -20,13 +20,18 @@ html, body, p{
 }
 .left-box {
     flex: 1;
-    padding: 6px;
-    margin: 50px 30px 0px 30px;
+    padding: 4px;
+    margin: 4px 30px 0px 30px;
+    opacity: 0.97;
+    background-color: #5f6487;
 }
 .right-box {
     flex: 1;
-    padding: 10px;
+    padding: 20px;
     margin-right: 55px;
+    margin-left: 20px;
+    opacity: 0.97;
+    background-color: #5f6487;
 }
 .info-box {
     border-radius: 10px;
