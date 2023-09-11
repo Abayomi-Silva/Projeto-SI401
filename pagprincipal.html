@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tetris</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .left-box {
+            flex: 1;
+            padding: 20px;
+        }
+        .right-box {
+            flex: 1;
+            padding: 20px;
+        }
+        .info-box {
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .info-box h2 {
+            margin-top: 0;
+        }
+        .center-box {
+            flex: 2;
+            text-align: center;
+        }
+        .next-block-box {
+            background-color: #f0f0f0;
+            padding: 10px;
+            text-align: center;
+        }
+        .menu-box {
+            background-color: #f0f0f0;
+            padding: 10px;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-box">
+            <img src="./img/logo.jpg" alt="Imagem do jogo Tetris" width="165" height="300">
+
+            <h2>Nível</h2>
+            <div class="info-box">
+                <p>1</p>
+            </div>
+            <h2>Linhas Eliminadas</h2>
+            <div class="info-box">
+                <p>0</p>
+            </div>
+            <h2>Pontuação</h2>
+            <div class="info-box">
+                <p>0</p>
+            </div>
+            <h2>Tempo</h2>
+            <div class="info-box">
+                <p>00:00</p>
+            </div>
+        </div>
+        <div class="center-box">
+            <img src="./img/tetrisjogo.png" alt="Imagem do jogo Tetris" width="330" height="601">
+        </div>
+        <div class="right-box">
+            <h2>Próximo Bloco</h2>
+            <div class="next-block-box">
+                <img src="./img/blocoroxo.jpeg" alt="Próximo Bloco" width="100">
+            </div>
+            <h2></h2>
+            <div class="menu-box">
+                <p>Menu</p>
+            </div>
+            <div>
+                <h2>Controles</h2>>
+                <img src="./img/controles.png" alt="Imagem dos controles" width="50%">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
