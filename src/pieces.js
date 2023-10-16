@@ -25,6 +25,8 @@ class Piece {
             y: 0
         }
 
+        this.width = n_pieces.w
+
         this.id = id 
 
         this.orientation = Orientation.Up
@@ -58,13 +60,27 @@ class I_piece extends Piece {
     update(gs, drop, rotate, move) {
         let stopped = false
         
-        if(drop){
+        if(drop !== 0){
             this.pos.y +=1
 
             if (this.check_collision(gs)){
                 this.pos.y -=1
                 stopped = true
             }
+        }
+        else if(move !== 0){
+            let last_x = this.pos.x
+            let w      = this.width
+
+            this.pos.x = (this.pos.x + move + w) % w
+
+            if (this.check_collision(gs)){
+                this.pos.x = last_x
+                stopped = true
+            }
+        }
+        else if(rotate !== 0){
+            
         }
 
         let ngs = this.stamp_piece(gs)
@@ -79,7 +95,6 @@ class I_piece extends Piece {
         
         let ngs = structuredClone(gs);
 
-        
         // This last line is added to help 
         // checking collisions with the floor
         let last_line = []
@@ -105,7 +120,7 @@ class I_piece extends Piece {
 
     stamp_piece(gs){
 
-        let width = n_pieces.x
+        let w = this.width
 
         if (this.orientation == Orientation.Up || this.orientation == Orientation.Down){
             if(this.pos.y>=2) gs[this.pos.y -2][this.pos.x] = this.id
@@ -114,10 +129,10 @@ class I_piece extends Piece {
             gs[this.pos.y +1][this.pos.x] = this.id
         }
         else{
-            gs[this.pos.y][(this.pos.x-2 + width) % width] = this.id
-            gs[this.pos.y][(this.pos.x-1 + width) % width] = this.id
-            gs[this.pos.y][this.pos.x]                     = this.id
-            gs[this.pos.y][this.pos.x+1 % width]           = this.id
+            gs[this.pos.y][(this.pos.x-2 + w) % w] = this.id
+            gs[this.pos.y][(this.pos.x-1 + w) % w] = this.id
+            gs[this.pos.y][this.pos.x]             = this.id
+            gs[this.pos.y][this.pos.x+1 % w]       = this.id
         }
 
         return gs

@@ -109,12 +109,33 @@ function update_game(gs){
 let curr_piece = new I_piece(n_pieces)
 let next_piece = undefined
 
+document.addEventListener('keydown', function(event) {
+    if (curr_piece == null){
+        return;
+    }
+    
+    let ngs = structuredClone(document.game_state);
+
+    if(event.key === "ArrowLeft") {
+        curr_piece.update(ngs, 0, 0, -1) 
+    }
+    else if(event.key === "ArrowRight") {
+        curr_piece.update(ngs, 0, 0, 1) 
+    }
+    else if(event.key === "ArrowUp") {
+        curr_piece.update(ngs, 0, 0, 1) // Sentido horário
+    }
+    else if(event.key === "ArrowDown") {
+        curr_piece.update(ngs, 0, 0, -1) // Sentido anti-horário
+    }
+});
+
 let tick_interval = 500
 let should_tick = false
 let tick_id = setInterval(()=> should_tick = true, tick_interval)
 
 
-let min_interval = 250
+let min_interval = 50
 
 function game_loop(){
     console.log("New Loop");
