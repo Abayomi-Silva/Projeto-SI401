@@ -33,35 +33,6 @@ class Piece {
         this.orientation = Orientation.Up
     }
 
-    tick(){
-        throw new Error("Method 'tick()' must be implemented.");
-    }    
-    
-    rotate(){
-        throw new Error("Method 'rotate()' must be implemented.");
-    }
-
-    move(){
-        throw new Error("Method 'move()' must be implemented.");
-    }
-
-    check_collision(){
-        throw new Error("Method 'check_collision()' must be implemented.");
-    }
-
-    stamp_piece(){
-        throw new Error("Method 'stamp_piece()' must be implemented.");
-    }
-
-
-}
-
-
-class I_piece extends Piece {
-    constructor(n_pieces){
-        super(n_pieces, 1)
-    }
-
     tick(gs, drop) {
         let stopped = false
         
@@ -91,7 +62,6 @@ class I_piece extends Piece {
 
         this.orientation = (last_or + rotate + N_Orientations) % N_Orientations
 
-        
         if (this.check_collision(gs)){
             this.orientation = last_or
         }
@@ -137,6 +107,18 @@ class I_piece extends Piece {
         return false
     }
 
+    stamp_piece(){
+        throw new Error("Method 'stamp_piece()' must be implemented.");
+    }
+}
+
+
+class I_piece extends Piece {
+    constructor(n_pieces){
+        super(n_pieces, 1)
+    }
+
+
     stamp_piece(gs){
 
         let w = this.width
@@ -153,6 +135,42 @@ class I_piece extends Piece {
             gs[this.pos.y][this.pos.x]             = this.id
             gs[this.pos.y][this.pos.x+1 % w]       = this.id
         }
+
+        return gs
+    }
+
+}
+
+class Square_piece extends Piece {
+    constructor(n_pieces){
+        super(n_pieces, 2)
+    }
+
+    stamp_piece(gs){
+
+        let w = this.width
+
+        if(this.pos.y>=1) {
+            gs[this.pos.y -1][this.pos.x]           = this.id
+            gs[this.pos.y -1][(this.pos.x-1 +w) %w] = this.id
+        }
+        gs[this.pos.y][this.pos.x]             = this.id 
+        gs[this.pos.y][(this.pos.x-1 + w) % w] = this.id
+ 
+        /*
+        if (this.orientation == Orientation.Up || this.orientation == Orientation.Down){
+            if(this.pos.y>=2) gs[this.pos.y -2][this.pos.x] = this.id
+            if(this.pos.y>=1) gs[this.pos.y -1][this.pos.x] = this.id
+            gs[this.pos.y +0][this.pos.x] = this.id
+            gs[this.pos.y +1][this.pos.x] = this.id
+        }
+        else{
+            gs[this.pos.y][(this.pos.x-2 + w) % w] = this.id
+            gs[this.pos.y][(this.pos.x-1 + w) % w] = this.id
+            gs[this.pos.y][this.pos.x]             = this.id
+            gs[this.pos.y][this.pos.x+1 % w]       = this.id
+        }
+        */
 
         return gs
     }
