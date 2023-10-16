@@ -11,11 +11,12 @@ let piece_colors = [
 ]
 */
 
+const N_Orientations = 4;
 const Orientation = {
     Up: 0,
-    Down: 1,
-    Left: 2,
-    Right: 3
+    Right: 1,
+    Down: 2,
+    Left: 3,
 };
 
 class Piece {
@@ -33,19 +34,23 @@ class Piece {
     }
 
     tick(){
-        throw new Error("Method 'update()' must be implemented.");
+        throw new Error("Method 'tick()' must be implemented.");
     }    
     
     rotate(){
-        throw new Error("Method 'update()' must be implemented.");
+        throw new Error("Method 'rotate()' must be implemented.");
     }
 
-    draw(){
-        throw new Error("Method 'draw()' must be implemented.");
+    move(){
+        throw new Error("Method 'move()' must be implemented.");
     }
 
-    check_colision(){
-        throw new Error("Method 'draw()' must be implemented.");
+    check_collision(){
+        throw new Error("Method 'check_collision()' must be implemented.");
+    }
+
+    stamp_piece(){
+        throw new Error("Method 'stamp_piece()' must be implemented.");
     }
 
 
@@ -57,7 +62,7 @@ class I_piece extends Piece {
         super(n_pieces, 1)
     }
 
-    update(gs, drop, rotate, move) {
+    tick(gs, drop) {
         let stopped = false
         
         if(drop !== 0){
@@ -68,26 +73,40 @@ class I_piece extends Piece {
                 stopped = true
             }
         }
-        else if(move !== 0){
-            let last_x = this.pos.x
-            let w      = this.width
-
-            this.pos.x = (this.pos.x + move + w) % w
-
-            if (this.check_collision(gs)){
-                this.pos.x = last_x
-                stopped = true
-            }
-        }
-        else if(rotate !== 0){
             
-        }
-
         let ngs = this.stamp_piece(gs)
 
         return {
             ngs: ngs,
             stopped: stopped
+        }
+    }
+
+
+    // Note that rotate and move just change the internal
+    // state of the piece, it only updates on screen when 
+    // tick() is called
+    rotate(gs, rotate){
+        let last_or = this.orientation
+
+        this.orientation = (last_or + rotate + N_Orientations) % N_Orientations
+
+        
+        if (this.check_collision(gs)){
+            this.orientation = last_or
+        }
+
+
+    }
+
+    move(gs, move){
+        let last_x = this.pos.x
+        let w      = this.width
+
+        this.pos.x = (this.pos.x + move + w) % w
+
+        if (this.check_collision(gs)){
+            this.pos.x = last_x
         }
     }
 

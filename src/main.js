@@ -96,7 +96,7 @@ function update_game(gs){
         drop = 1
     }
 
-    ret = curr_piece.update(ngs, drop, 0, 0) 
+    ret = curr_piece.tick(ngs, drop) 
 
     if (ret.stopped){
         document.game_state = ret.ngs
@@ -117,16 +117,16 @@ document.addEventListener('keydown', function(event) {
     let ngs = structuredClone(document.game_state);
 
     if(event.key === "ArrowLeft") {
-        curr_piece.update(ngs, 0, 0, -1) 
+        curr_piece.move(ngs, -1) 
     }
     else if(event.key === "ArrowRight") {
-        curr_piece.update(ngs, 0, 0, 1) 
+        curr_piece.move(ngs, 1) 
     }
     else if(event.key === "ArrowUp") {
-        curr_piece.update(ngs, 0, 0, 1) // Sentido horário
+        curr_piece.rotate(ngs, 1) // Sentido horário
     }
     else if(event.key === "ArrowDown") {
-        curr_piece.update(ngs, 0, 0, -1) // Sentido anti-horário
+        curr_piece.rotate(ngs, -1) // Sentido anti-horário
     }
 });
 
