@@ -4,7 +4,7 @@ let piece_colors = [
     "#f94144", // I 
     "#F3722C", // square 
     "#F8961E", // L
-    "#F9C74F", // flipped L
+    "#F9C74F", // mirror L
     "#90BE6D", // T
     "#43AA8B", // U
     gradient   // Special piece 
@@ -53,9 +53,8 @@ class Piece {
         }
     }
 
-
     // Note that rotate and move just change the internal
-    // state of the piece, it only updates on screen when 
+    // state of the piece, the screen updates only when 
     // tick() is called
     rotate(gs, rotate){
         let last_or = this.orientation
@@ -118,7 +117,6 @@ class I_piece extends Piece {
         super(n_pieces, 1)
     }
 
-
     stamp_piece(gs){
 
         let w = this.width
@@ -133,12 +131,11 @@ class I_piece extends Piece {
             gs[this.pos.y][(this.pos.x-2 + w) % w] = this.id
             gs[this.pos.y][(this.pos.x-1 + w) % w] = this.id
             gs[this.pos.y][this.pos.x]             = this.id
-            gs[this.pos.y][this.pos.x+1 % w]       = this.id
+            gs[this.pos.y][(this.pos.x+1) % w]     = this.id
         }
 
         return gs
     }
-
 }
 
 class Square_piece extends Piece {
@@ -156,23 +153,220 @@ class Square_piece extends Piece {
         }
         gs[this.pos.y][this.pos.x]             = this.id 
         gs[this.pos.y][(this.pos.x-1 + w) % w] = this.id
- 
-        /*
-        if (this.orientation == Orientation.Up || this.orientation == Orientation.Down){
-            if(this.pos.y>=2) gs[this.pos.y -2][this.pos.x] = this.id
-            if(this.pos.y>=1) gs[this.pos.y -1][this.pos.x] = this.id
-            gs[this.pos.y +0][this.pos.x] = this.id
-            gs[this.pos.y +1][this.pos.x] = this.id
-        }
-        else{
-            gs[this.pos.y][(this.pos.x-2 + w) % w] = this.id
-            gs[this.pos.y][(this.pos.x-1 + w) % w] = this.id
-            gs[this.pos.y][this.pos.x]             = this.id
-            gs[this.pos.y][this.pos.x+1 % w]       = this.id
-        }
-        */
 
         return gs
     }
+
+}
+
+class L_piece extends Piece {
+    constructor(n_pieces){
+        super(n_pieces, 3)
+    }
+
+    stamp_piece(gs){
+
+        let w = this.width
+
+ 
+        switch(this.orientation){
+            case Orientation.Up:
+                if(this.pos.y>=1) gs[this.pos.y -1][this.pos.x] = this.id
+                gs[this.pos.y +0][this.pos.x]                   = this.id
+                gs[this.pos.y +1][this.pos.x]                   = this.id
+                gs[this.pos.y +1][(this.pos.x+1 ) %w]           = this.id
+                break;
+
+            case Orientation.Right:
+                gs[this.pos.y + 1][(this.pos.x-1 + w) % w] = this.id
+                gs[this.pos.y][(this.pos.x-1 + w) % w]     = this.id
+                gs[this.pos.y][this.pos.x]                 = this.id
+                gs[this.pos.y][(this.pos.x+1) % w]         = this.id
+                break;
+
+            case Orientation.Down:
+                gs[this.pos.y +1][this.pos.x]                          = this.id
+                gs[this.pos.y +0][this.pos.x]                          = this.id
+                if(this.pos.y>=1) gs[this.pos.y -1][this.pos.x]        = this.id
+                if(this.pos.y>=1) gs[this.pos.y -1][(this.pos.x-1 + w) %w] = this.id
+                break;
+
+            case Orientation.Left:
+                gs[this.pos.y - 1][(this.pos.x+1) % w] = this.id
+                gs[this.pos.y][(this.pos.x+1) % w]     = this.id
+                gs[this.pos.y][this.pos.x]             = this.id
+                gs[this.pos.y][(this.pos.x-1 + w) % w] = this.id
+                break;
+        }
+
+        return gs
+    }
+    
+
+}
+
+class Mirror_L_piece extends Piece {
+    constructor(n_pieces){
+        super(n_pieces, 4)
+    }
+
+    stamp_piece(gs){
+
+        let w = this.width
+
+ 
+        switch(this.orientation){
+            case Orientation.Up:
+                if(this.pos.y>=1) gs[this.pos.y -1][this.pos.x] = this.id
+                gs[this.pos.y +0][this.pos.x]                   = this.id
+                gs[this.pos.y +1][this.pos.x]                   = this.id
+                gs[this.pos.y +1][(this.pos.x-1 +w) %w]         = this.id
+                break;
+
+            case Orientation.Right:
+                if(this.pos.y>=1) gs[this.pos.y - 1][(this.pos.x-1 + w) % w] = this.id
+                gs[this.pos.y][(this.pos.x-1 + w) % w]                       = this.id
+                gs[this.pos.y][this.pos.x]                                   = this.id
+                gs[this.pos.y][(this.pos.x+1) % w]                           = this.id
+                break;
+
+            case Orientation.Down:
+                gs[this.pos.y +1][this.pos.x]                          = this.id
+                gs[this.pos.y +0][this.pos.x]                          = this.id
+                if(this.pos.y>=1) gs[this.pos.y -1][this.pos.x]        = this.id
+                if(this.pos.y>=1) gs[this.pos.y -1][(this.pos.x+1) %w] = this.id
+                break;
+
+            case Orientation.Left:
+                gs[this.pos.y + 1][(this.pos.x+1) % w] = this.id
+                gs[this.pos.y][(this.pos.x+1) % w]     = this.id
+                gs[this.pos.y][this.pos.x]             = this.id
+                gs[this.pos.y][(this.pos.x-1 + w) % w] = this.id
+                break;
+        }
+
+        return gs
+    }
+    
+
+}
+
+class T_piece extends Piece {
+    constructor(n_pieces){
+        super(n_pieces, 5)
+    }
+
+    stamp_piece(gs){
+
+        let w = this.width
+
+ 
+        switch(this.orientation){
+            case Orientation.Up:
+                if(this.pos.y>=1) gs[this.pos.y-1][this.pos.x] = this.id
+                gs[this.pos.y +0][this.pos.x]                  = this.id
+                gs[this.pos.y +0][(this.pos.x+1) % w]          = this.id
+                gs[this.pos.y +0][(this.pos.x-1 +w) %w]        = this.id
+                break;
+
+            case Orientation.Right:
+                if(this.pos.y>=1) gs[this.pos.y -1][this.pos.x] = this.id
+                gs[this.pos.y +0][this.pos.x]                   = this.id
+                gs[this.pos.y +0][(this.pos.x+1) % w]           = this.id
+                gs[this.pos.y +1][this.pos.x]                   = this.id
+                break;
+
+            case Orientation.Down:    
+                gs[this.pos.y +0][this.pos.x]                   = this.id
+                gs[this.pos.y +0][(this.pos.x+1) % w]           = this.id
+                gs[this.pos.y +1][this.pos.x]                   = this.id
+                gs[this.pos.y +0][(this.pos.x-1 +w) %w]         = this.id
+                break;
+
+            case Orientation.Left:
+                if(this.pos.y>=1) gs[this.pos.y-1][this.pos.x] = this.id
+                gs[this.pos.y +0][this.pos.x]                  = this.id
+                gs[this.pos.y +0][(this.pos.x-1 +w) % w]       = this.id
+                gs[this.pos.y +1][this.pos.x]                  = this.id
+                break;
+        }
+
+        return gs
+    }
+    
+
+}
+
+class U_piece extends Piece {
+    constructor(n_pieces){
+        super(n_pieces, 6)
+    }
+
+    stamp_piece(gs){
+
+        let w = this.width
+
+ 
+        switch(this.orientation){
+            case Orientation.Up: 
+                gs[this.pos.y +0][this.pos.x]                              = this.id 
+                
+                gs[this.pos.y +0][(this.pos.x +1) %w]                      = this.id
+                if(this.pos.y>=1) gs[this.pos.y -1][(this.pos.x +1) %w]    = this.id
+
+                gs[this.pos.y +0][(this.pos.x -1 +w) %w]                   = this.id
+                if(this.pos.y>=1) gs[this.pos.y -1][(this.pos.x -1 +w) %w] = this.id
+                break;
+
+            case Orientation.Right:
+                gs[this.pos.y +0][this.pos.x]                           = this.id 
+                    
+                if(this.pos.y>=1) gs[this.pos.y -1][this.pos.x]         = this.id
+                if(this.pos.y>=1) gs[this.pos.y -1][(this.pos.x +1) %w] = this.id
+
+                gs[this.pos.y +1][this.pos.x]                           = this.id
+                gs[this.pos.y +1][(this.pos.x +1 ) %w]                  = this.id
+                break;
+
+            case Orientation.Down:    
+                gs[this.pos.y +0][this.pos.x]            = this.id 
+                    
+                gs[this.pos.y +0][(this.pos.x +1) %w]    = this.id
+                gs[this.pos.y +1][(this.pos.x +1) %w]    = this.id
+
+                gs[this.pos.y +0][(this.pos.x -1 +w) %w] = this.id
+                gs[this.pos.y +1][(this.pos.x -1 +w) %w] = this.id
+                break;
+
+            case Orientation.Left:
+                gs[this.pos.y +0][this.pos.x]                              = this.id 
+                    
+                gs[this.pos.y +1][this.pos.x]                              = this.id
+                gs[this.pos.y +1][(this.pos.x -1 +w) %w]                   = this.id
+
+                if(this.pos.y>=1) gs[this.pos.y -1][this.pos.x]            = this.id
+                if(this.pos.y>=1) gs[this.pos.y -1][(this.pos.x -1 +w) %w] = this.id
+
+                break;
+        }
+
+        return gs
+    }
+    
+
+}
+
+class Special_piece extends Piece {
+    constructor(n_pieces){
+        super(n_pieces, 7)
+    }
+
+    stamp_piece(gs){
+ 
+        gs[this.pos.y][this.pos.x] = this.id
+                
+        return gs
+    }
+    
 
 }

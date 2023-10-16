@@ -44,7 +44,7 @@ let piece_colors = [
     "#f94144", // I 
     "#F3722C", // square 
     "#F8961E", // L
-    "#F9C74F", // flipped L
+    "#F9C74F", // mirror L
     "#90BE6D", // T
     "#43AA8B", // U
     "#000000"   // Special piece 
@@ -106,7 +106,7 @@ function update_game(gs){
     return ret.ngs
 }
 
-let curr_piece = new I_piece(n_pieces)
+let curr_piece = new U_piece(n_pieces)
 let next_piece = undefined
 
 document.addEventListener('keydown', function(event) {
@@ -130,7 +130,7 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-let tick_interval = 500
+let tick_interval = 2500
 let should_tick = false
 let tick_id = setInterval(()=> should_tick = true, tick_interval)
 
