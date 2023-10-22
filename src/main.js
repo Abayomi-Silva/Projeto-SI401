@@ -12,8 +12,8 @@ console.log("Canvas: w:"+ dims.w + " h:"+dims.h);
 
 
 let n_pieces = {
-    h: 20,
-    w: 10
+    h: 18,
+    w: 12
 }
 
 
@@ -36,7 +36,6 @@ function debug_board(game){
     console.log(board);
 }
 debug_board(document.game_state)
-
 
 
 let piece_colors = [
@@ -104,9 +103,38 @@ function* piece_gen(){
 }
 
 let piece_iterator = piece_gen()
-let curr_piece = piece_iterator.next().value
-let next_piece = piece_iterator.next().value
+let curr_piece     = piece_iterator.next().value
+let next_piece     = piece_iterator.next().value
 
+
+function remove_whole_lines(gs){
+    let mask = gs.map(col => col.reduce((acc, curr) => curr==0 ? acc : acc+1, 0))
+    mask     = mask.map(sum => sum===n_pieces.w ? true : false)
+
+    let blank_line = []
+    for (let j = 0; j < n_pieces.w; j++) {
+        blank_line.push(0)
+    }  
+
+    for (let i = n_pieces.h-1; i >= 0; i--) {
+        if(mask[i]){
+            if(i === 0){
+                gs[i] = structuredClone(blank_line)
+            }
+            else{
+                gs.splice(i, 1)
+                gs.unshift(structuredClone(blank_line))
+                
+                // This is necessary because the line that
+                // "dropped" wasn't checked yet
+                mask.unshift(false)
+                i++
+            }
+        }
+    }
+
+    return gs
+}
 
 function update_game(gs){
     let ngs = structuredClone(gs);
@@ -117,10 +145,10 @@ function update_game(gs){
         return ngs
     }
 
-    drop = 0
+    let drop = false
     if (should_tick){
         should_tick = false
-        drop = 1
+        drop = true
     }
 
     let ret = curr_piece.tick(ngs, drop) 
@@ -128,6 +156,9 @@ function update_game(gs){
     if (ret.stopped){
         document.game_state = ret.ngs
         curr_piece = null
+
+        ret.ngs = remove_whole_lines(ret.ngs)
+        should_tick = false
     }
 
     return ret.ngs
@@ -165,7 +196,7 @@ document.addEventListener('keydown', function(event) {
 });
 
 
-let tick_interval = 500
+let tick_interval = 800
 let should_tick = false
 let tick_id = setInterval(()=> should_tick = true, tick_interval)
 let min_interval = 50

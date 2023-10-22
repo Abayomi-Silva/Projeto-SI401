@@ -36,7 +36,7 @@ class Piece {
     tick(gs, drop) {
         let stopped = false
         
-        if(drop !== 0){
+        if(drop){
             this.pos.y +=1
 
             if (this.check_collision(gs)){
@@ -80,7 +80,8 @@ class Piece {
     }
 
     check_collision(gs){
-        
+
+        let ngs = structuredClone(gs)
         let blank_gs = []
 
         for (let i = 0; i < n_pieces.h; i++) {
@@ -97,9 +98,9 @@ class Piece {
             last_line.push(999)
         }
         blank_gs.push(last_line)
-        gs.push(last_line)
+        ngs.push(last_line)
 
-        let mask = gs.map(col => col.map(p => p==0? 0 : 1))
+        let mask = ngs.map(col => col.map(p => p==0? 0 : 1))
         mask.push(structuredClone(last_line))        
         blank_gs = this.stamp_piece(blank_gs) 
 
