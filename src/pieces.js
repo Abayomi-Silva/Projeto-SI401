@@ -81,23 +81,32 @@ class Piece {
 
     check_collision(gs){
         
-        let ngs = structuredClone(gs);
+        let blank_gs = []
+
+        for (let i = 0; i < n_pieces.h; i++) {
+            blank_gs.push([])
+            for (let j = 0; j < n_pieces.w; j++) {
+                blank_gs[i].push(0)
+            }   
+        }
 
         // This last line is added to help 
         // checking collisions with the floor
         let last_line = []
-        for (let i = 0; i < ngs[0].length; i++) {
+        for (let i = 0; i < blank_gs[0].length; i++) {
             last_line.push(999)
         }
-        ngs.push(last_line)
+        blank_gs.push(last_line)
+        gs.push(last_line)
 
-        let mask = ngs.map(col => col.map(p => p==0? 0 : 1))
-        ngs      = this.stamp_piece(ngs)
+        let mask = gs.map(col => col.map(p => p==0? 0 : 1))
+        mask.push(structuredClone(last_line))        
+        blank_gs = this.stamp_piece(blank_gs) 
 
         // notice that the +1 here is due to the floor
         for (let i = 0; i < n_pieces.h + 1; i++) { 
             for (let j = 0; j < n_pieces.w; j++) {
-                if (ngs[i][j] !== 0 && ngs[i][j] !== 999 && mask[i][j] === 1){
+                if (blank_gs[i][j] !== 0 && blank_gs[i][j] !== 999 && mask[i][j] === 1){
                     return true
                 }
             }   
@@ -325,7 +334,7 @@ class U_piece extends Piece {
                 if(this.pos.y>=1) gs[this.pos.y -1][(this.pos.x +1) %w] = this.id
 
                 gs[this.pos.y +1][this.pos.x]                           = this.id
-                gs[this.pos.y +1][(this.pos.x +1 ) %w]                  = this.id
+                gs[this.pos.y +1][(this.pos.x +1) %w]                   = this.id
                 break;
 
             case Orientation.Down:    

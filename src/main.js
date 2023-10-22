@@ -47,11 +47,8 @@ let piece_colors = [
     "#F9C74F", // mirror L
     "#90BE6D", // T
     "#43AA8B", // U
-    "#000000"   // Special piece 
+    "#000000"  // Special piece 
 ]
-
-
-
 
 
 
@@ -64,7 +61,6 @@ function draw_game(gs){
     
     let lineWidth = 5
     
-
     let square_sz = {
         w: (dims.w - lineWidth * (n_pieces.w + 1)) / n_pieces.w,
         h: (dims.h - lineWidth * (n_pieces.h + 1)) / n_pieces.h,
@@ -83,10 +79,41 @@ function draw_game(gs){
     ctx.restore()
 }
 
+function* piece_gen(){
+    let constructors = [
+        I_piece,
+        Square_piece,
+        L_piece,
+        Mirror_L_piece,
+        T_piece,
+        U_piece,
+        Special_piece,
+    ]
+
+    let curr = Math.floor(7*Math.random())
+    let next = null
+    yield new constructors[curr](n_pieces)
+
+    while(true){
+        next = Math.floor(7*Math.random())
+        if(next !== curr){
+            yield new constructors[next](n_pieces)
+            curr = next
+        }            
+    }
+}
+
+let piece_iterator = piece_gen()
+let curr_piece = piece_iterator.next().value
+let next_piece = piece_iterator.next().value
+
+
 function update_game(gs){
     let ngs = structuredClone(gs);
 
     if (curr_piece == null){
+        curr_piece = next_piece
+        next_piece = piece_iterator.next().value
         return ngs
     }
 
@@ -96,7 +123,7 @@ function update_game(gs){
         drop = 1
     }
 
-    ret = curr_piece.tick(ngs, drop) 
+    let ret = curr_piece.tick(ngs, drop) 
 
     if (ret.stopped){
         document.game_state = ret.ngs
@@ -106,8 +133,7 @@ function update_game(gs){
     return ret.ngs
 }
 
-let curr_piece = new U_piece(n_pieces)
-let next_piece = undefined
+
 
 document.addEventListener('keydown', function(event) {
     if (curr_piece == null){
@@ -130,11 +156,10 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-let tick_interval = 2500
+
+let tick_interval = 500
 let should_tick = false
 let tick_id = setInterval(()=> should_tick = true, tick_interval)
-
-
 let min_interval = 50
 
 function game_loop(){
