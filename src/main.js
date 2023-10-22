@@ -154,6 +154,14 @@ document.addEventListener('keydown', function(event) {
     else if(event.key === "ArrowDown") {
         curr_piece.rotate(ngs, -1) // Sentido anti-horário
     }
+    else if(event.code === "Space") {
+        let ret = null
+        do {
+            ret = curr_piece.tick(ngs, true)
+            ngs = structuredClone(document.game_state);
+        }
+        while(!ret.stopped)
+    }
 });
 
 
