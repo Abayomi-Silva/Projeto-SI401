@@ -195,17 +195,17 @@ class L_piece extends Piece {
                 break;
 
             case Orientation.Down:
-                gs[this.pos.y +1][this.pos.x]                          = this.id
-                gs[this.pos.y +0][this.pos.x]                          = this.id
-                if(this.pos.y>=1) gs[this.pos.y -1][this.pos.x]        = this.id
+                gs[this.pos.y +1][this.pos.x]                              = this.id
+                gs[this.pos.y +0][this.pos.x]                              = this.id
+                if(this.pos.y>=1) gs[this.pos.y -1][this.pos.x]            = this.id
                 if(this.pos.y>=1) gs[this.pos.y -1][(this.pos.x-1 + w) %w] = this.id
                 break;
 
             case Orientation.Left:
-                gs[this.pos.y - 1][(this.pos.x+1) % w] = this.id
-                gs[this.pos.y][(this.pos.x+1) % w]     = this.id
-                gs[this.pos.y][this.pos.x]             = this.id
-                gs[this.pos.y][(this.pos.x-1 + w) % w] = this.id
+                if(this.pos.y>=1) gs[this.pos.y -1][(this.pos.x+1) % w] = this.id
+                gs[this.pos.y][(this.pos.x+1) % w]                      = this.id
+                gs[this.pos.y][this.pos.x]                              = this.id
+                gs[this.pos.y][(this.pos.x-1 + w) % w]                  = this.id
                 break;
         }
 

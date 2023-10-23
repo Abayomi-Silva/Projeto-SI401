@@ -23,6 +23,7 @@ let game_stats = {
     level: 1
 }
 
+document.game_reversed = false
 
 document.game_state = []
 for (let i = 0; i < n_pieces.h; i++) {
@@ -121,7 +122,9 @@ function remove_whole_lines(gs){
     let blank_line = []
     for (let j = 0; j < n_pieces.w; j++) {
         blank_line.push(0)
-    }  
+    } 
+
+    let specials_removed = 0
 
     for (let i = n_pieces.h-1; i >= 0; i--) {
         if(mask[i]){
@@ -130,6 +133,8 @@ function remove_whole_lines(gs){
                 gs[i] = structuredClone(blank_line)
             }
             else{
+                specials_removed += gs[i].reduce((acc, curr) => curr===7 ? acc+1 : acc, 0)
+
                 gs.splice(i, 1)
                 gs.unshift(structuredClone(blank_line))
                 
@@ -140,6 +145,12 @@ function remove_whole_lines(gs){
             }
         }
     }
+
+    if(specials_removed%2 == 1){
+        document.game_reversed = !document.game_reversed
+
+        gs = gs.map((col) => col.reverse())
+    } 
 
     let lines_removed = mask.reduce((acc, curr) => curr? acc+1 : acc, 0)
     game_stats.removed_lines += lines_removed
@@ -167,7 +178,7 @@ function update_stats() {
     elem_score.innerText         = game_stats.score
     elem_removed_lines.innerText = game_stats.removed_lines
     elem_elapsed_time.innerText  = formated_time
-    elem_level.innerText         = game_stats.level + 1 // To that it starts on 1
+    elem_level.innerText         = game_stats.level + 1 // So that it starts on 1
 
 }
 
@@ -208,19 +219,36 @@ document.addEventListener('keydown', function(event) {
     
     let ngs = structuredClone(document.game_state);
 
-    if(event.key === "ArrowLeft") {
-        curr_piece.move(ngs, -1) 
+    if(!document.game_reversed){
+        if(event.key === "ArrowLeft") {
+            curr_piece.move(ngs, -1) 
+        }
+        else if(event.key === "ArrowRight") {
+            curr_piece.move(ngs, 1) 
+        }
+        else if(event.key === "ArrowUp") {
+            curr_piece.rotate(ngs, 1) // Sentido horário
+        }
+        else if(event.key === "ArrowDown") {
+            curr_piece.rotate(ngs, -1) // Sentido anti-horário
+        }
     }
-    else if(event.key === "ArrowRight") {
-        curr_piece.move(ngs, 1) 
+    else{
+        if(event.key === "ArrowLeft") {
+            curr_piece.move(ngs, 1) 
+        }
+        else if(event.key === "ArrowRight") {
+            curr_piece.move(ngs, -1) 
+        }
+        else if(event.key === "ArrowUp") {
+            curr_piece.rotate(ngs, -1) // Sentido horário
+        }
+        else if(event.key === "ArrowDown") {
+            curr_piece.rotate(ngs, 1) // Sentido anti-horário
+        }
     }
-    else if(event.key === "ArrowUp") {
-        curr_piece.rotate(ngs, 1) // Sentido horário
-    }
-    else if(event.key === "ArrowDown") {
-        curr_piece.rotate(ngs, -1) // Sentido anti-horário
-    }
-    else if(event.code === "Space") {
+    
+    if(event.code === "Space") {
         let ret = null
         do {
             ret = curr_piece.tick(ngs, true)
