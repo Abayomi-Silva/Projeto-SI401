@@ -16,6 +16,13 @@ let n_pieces = {
     w: 12
 }
 
+let game_stats = {
+    score: 0,
+    removed_lines: 0,
+    start_time: 0,
+    level: 1
+}
+
 
 document.game_state = []
 for (let i = 0; i < n_pieces.h; i++) {
@@ -118,6 +125,7 @@ function remove_whole_lines(gs){
 
     for (let i = n_pieces.h-1; i >= 0; i--) {
         if(mask[i]){
+
             if(i === 0){
                 gs[i] = structuredClone(blank_line)
             }
@@ -133,7 +141,34 @@ function remove_whole_lines(gs){
         }
     }
 
+    let lines_removed = mask.reduce((acc, curr) => curr? acc+1 : acc, 0)
+    game_stats.removed_lines += lines_removed
+    game_stats.score         += 10 * (lines_removed**2)
+
     return gs
+}
+
+function update_stats() {
+    let elem_score         = document.getElementById("game_pontuacao")
+    let elem_removed_lines = document.getElementById("game_linhas_eliminadas")
+    let elem_elapsed_time  = document.getElementById("game_tempo")
+    let elem_level         = document.getElementById("game_nivel")
+
+    let elapsed_time  = Date.now() - game_stats.start_time
+    let formated_time = (new Date(value=elapsed_time))
+                            .toLocaleTimeString("pt-BR", options={minute: "numeric", second:"numeric"}) 
+
+    clearInterval(tick_id)
+    game_stats.level = Math.floor(game_stats.score/300)
+    let new_interval = tick_interval - game_stats.level * 100
+    tick_id = setInterval(()=> should_tick = true, new_interval)
+
+
+    elem_score.innerText         = game_stats.score
+    elem_removed_lines.innerText = game_stats.removed_lines
+    elem_elapsed_time.innerText  = formated_time
+    elem_level.innerText         = game_stats.level + 1 // To that it starts on 1
+
 }
 
 function update_game(gs){
@@ -196,10 +231,13 @@ document.addEventListener('keydown', function(event) {
 });
 
 
-let tick_interval = 800
-let should_tick = false
-let tick_id = setInterval(()=> should_tick = true, tick_interval)
-let min_interval = 50
+let tick_interval = 500
+let should_tick   = false
+let tick_id       = setInterval(()=> should_tick = true, tick_interval)
+
+let stats_tick_id = setInterval(update_stats, 1000)
+
+let min_interval = 25
 
 function game_loop(){
     console.log("New Loop");
@@ -207,6 +245,13 @@ function game_loop(){
     draw_game(temp_gs)
     setTimeout(game_loop, min_interval)
 }
+
+function end_game(){
+    clearInterval(tick_id)
+    clearInterval(stats_tick_id)
+}
+
+game_stats.start_time = Date.now()
 game_loop()
 
 
