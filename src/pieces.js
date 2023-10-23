@@ -7,16 +7,15 @@ const Orientation = {
 };
 
 class Piece {
-    constructor (n_pieces, id){
+    constructor (n_pieces, id, file_name){
         this.pos = {
             x: Math.floor(n_pieces.w/2),
             y: 0
         }
 
-        this.width = n_pieces.w
-
-        this.id = id 
-
+        this.width       = n_pieces.w
+        this.id          = id 
+        this.file_name   = file_name
         this.orientation = Orientation.Up
     }
 
@@ -114,7 +113,7 @@ class Piece {
 
 class I_piece extends Piece {
     constructor(n_pieces){
-        super(n_pieces, 1)
+        super(n_pieces, 1, "I_piece.png")
     }
 
     stamp_piece(gs){
@@ -140,7 +139,7 @@ class I_piece extends Piece {
 
 class Square_piece extends Piece {
     constructor(n_pieces){
-        super(n_pieces, 2)
+        super(n_pieces, 2, "Square_piece.png")
     }
 
     stamp_piece(gs){
@@ -161,7 +160,7 @@ class Square_piece extends Piece {
 
 class L_piece extends Piece {
     constructor(n_pieces){
-        super(n_pieces, 3)
+        super(n_pieces, 3, "L_piece.png")
     }
 
     stamp_piece(gs){
@@ -207,7 +206,7 @@ class L_piece extends Piece {
 
 class Mirror_L_piece extends Piece {
     constructor(n_pieces){
-        super(n_pieces, 4)
+        super(n_pieces, 4, "Mirror_L_piece.png")
     }
 
     stamp_piece(gs){
@@ -253,7 +252,7 @@ class Mirror_L_piece extends Piece {
 
 class T_piece extends Piece {
     constructor(n_pieces){
-        super(n_pieces, 5)
+        super(n_pieces, 5, "T_piece.png")
     }
 
     stamp_piece(gs){
@@ -299,7 +298,7 @@ class T_piece extends Piece {
 
 class U_piece extends Piece {
     constructor(n_pieces){
-        super(n_pieces, 6)
+        super(n_pieces, 6, "U_piece.png")
     }
 
     stamp_piece(gs){
@@ -358,7 +357,7 @@ class U_piece extends Piece {
 
 class Special_piece extends Piece {
     constructor(n_pieces){
-        super(n_pieces, 7)
+        super(n_pieces, 7, "Special_piece.png")
     }
 
     stamp_piece(gs){

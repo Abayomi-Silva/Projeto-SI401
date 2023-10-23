@@ -80,6 +80,17 @@
     margin: 15px 10px 35px 10px;
     background-color: #32168f;
     border-radius: 10px;
+
+    display:flex;
+    flex-direction: column;
+}
+
+.next-block-box{
+    height: 500px;
+}
+
+#game_next_piece{
+    margin: 50px;
 }
 
 .menu-box {

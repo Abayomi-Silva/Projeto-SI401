@@ -16,6 +16,8 @@ document.game_reversed = false
 document.game_state    = []
 document.game_over     = false
 
+let img_next_piece = document.getElementById("game_next_piece")
+
 
 let piece_colors = [
     "#5f6487", // Empty
@@ -43,8 +45,7 @@ function draw_game(gs){
     ctx.save()
 
     //background
-    //ctx.fillStyle = "#b7c0f3";
-    ctx.fillStye = "red"
+    ctx.fillStyle = "#b7c0f3";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
     let lineWidth = 5
@@ -166,6 +167,8 @@ function update_game(gs){
         is_new_piece  = true
         curr_piece    = next_piece
         next_piece    = piece_iterator.next().value
+
+        img_next_piece.src = "./images/pieces/" + next_piece.file_name
         
         // This is so that new pieces don't immediately drop
         should_tick   = false
@@ -310,6 +313,8 @@ function setup_game(){
     piece_iterator = piece_gen()
     curr_piece     = piece_iterator.next().value
     next_piece     = piece_iterator.next().value
+    img_next_piece.src = "./images/pieces/" + next_piece.file_name
+
 
     game_stats = {
         score: 0,
