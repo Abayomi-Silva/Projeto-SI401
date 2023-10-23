@@ -31,6 +31,9 @@ class Piece {
                 stopped = true
             }
         }
+        else{
+            stopped = this.check_collision(gs)
+        }
             
         let ngs = this.stamp_piece(gs)
 

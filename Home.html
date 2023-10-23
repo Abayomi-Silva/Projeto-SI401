@@ -24,7 +24,7 @@
 
                 <div class="info-box">
                     <label>Pontuação</label>
-                    <p class="lbl" id="game_pontuacao">000 000</p>
+                    <p class="lbl" id="game_pontuacao">0</p>
                 </div>
 
                 <div class="info-box">
@@ -44,8 +44,14 @@
             </div>
 
             <div class="center-box border-fix">
-                <canvas class="game-window" 
+                <canvas class="game-window" style="display:none"
                     alt="Imagem do jogo Tetris" id="game_canvas">
+                </canvas>
+
+                <div class="game-window" id="game_overlay">
+                    <p id="game_overlay_text">Iniciar</p>
+                    <button id="game_overlay_button">Publicar Score</button>
+                </div>
             </div>
 
             <div class="right-box">

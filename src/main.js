@@ -1,50 +1,20 @@
-const canvas = document.getElementById("game_canvas");
-const ctx    = canvas.getContext("2d");
+let canvas   = null
+let ctx      = null 
+let dims     = null
+let n_pieces = null
+
+let piece_iterator = null
+let curr_piece     = null
+let next_piece     = null
 
 
-let dims = {
-    w: canvas.clientWidth,
-    h: canvas.clientHeight
-}
-canvas.setAttribute('width', dims.w);
-canvas.setAttribute('height', dims.h);
-console.log("Canvas: w:"+ dims.w + " h:"+dims.h);
-
-
-let n_pieces = {
-    h: 18,
-    w: 12
-}
-
-let game_stats = {
-    score: 0,
-    removed_lines: 0,
-    start_time: 0,
-    level: 1
-}
+let game_stats    = null
+let stats_tick_id = null
 
 document.game_paused   = false
 document.game_reversed = false
-
-document.game_state = []
-for (let i = 0; i < n_pieces.h; i++) {
-    document.game_state.push([])
-    for (let j = 0; j < n_pieces.w; j++) {
-        document.game_state[i].push(0)
-    }   
-}
-
-function debug_board(game){
-    board = ""
-    for (let i = 0; i < n_pieces.h; i++) {
-        for (let j = 0; j < n_pieces.w; j++) {
-            board += game[i][j] + " "
-        }   
-        board += '\n'
-    }
-    console.log(board);
-}
-debug_board(document.game_state)
+document.game_state    = []
+document.game_over     = false
 
 
 let piece_colors = [
@@ -58,13 +28,23 @@ let piece_colors = [
     "#000000"  // Special piece 
 ]
 
-
+function debug_board(game){
+    board = ""
+    for (let i = 0; i < n_pieces.h; i++) {
+        for (let j = 0; j < n_pieces.w; j++) {
+            board += game[i][j] + " "
+        }   
+        board += '\n'
+    }
+    console.log(board);
+}
 
 function draw_game(gs){
     ctx.save()
 
     //background
-    ctx.fillStyle = "#b7c0f3";
+    //ctx.fillStyle = "#b7c0f3";
+    ctx.fillStye = "red"
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
     let lineWidth = 5
@@ -110,11 +90,6 @@ function* piece_gen(){
         }            
     }
 }
-
-let piece_iterator = piece_gen()
-let curr_piece     = piece_iterator.next().value
-let next_piece     = piece_iterator.next().value
-
 
 function remove_whole_lines(gs){
     let mask = gs.map(col => col.reduce((acc, curr) => curr==0 ? acc : acc+1, 0))
@@ -184,15 +159,18 @@ function update_stats() {
 
 function update_game(gs){
     let ngs = structuredClone(gs);
-
-    if (curr_piece == null){
-        curr_piece = next_piece
-        next_piece = piece_iterator.next().value
-        return ngs
-    }
-
+    
+    let is_new_piece = false
     let drop = false
-    if (should_tick){
+    if (curr_piece == null){
+        is_new_piece  = true
+        curr_piece    = next_piece
+        next_piece    = piece_iterator.next().value
+        
+        // This is so that new pieces don't immediately drop
+        should_tick   = false
+    }
+    else if (should_tick){
         should_tick = false
         drop = true
     }
@@ -200,22 +178,27 @@ function update_game(gs){
     let ret = curr_piece.tick(ngs, drop) 
 
     if (ret.stopped){
+        if (is_new_piece){
+            // If a new piece is created and it is immediately 
+            // stopped, the player loses
+            document.game_over = true
+        }
+        else{
         document.game_state = ret.ngs
         curr_piece = null
 
         ret.ngs = remove_whole_lines(ret.ngs)
         should_tick = false
+        }
     }
 
     return ret.ngs
 }
 
-
 function switch_pause() {
     document.game_paused = !document.game_paused
     should_tick = false
 }
-
 
 document.addEventListener('keydown', function(event) {
     if (curr_piece == null){
@@ -266,22 +249,14 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-
-let tick_interval = 500
-let should_tick   = false
-let tick_id       = setInterval(()=> should_tick = true, tick_interval)
-
-let stats_tick_id = setInterval(update_stats, 1000)
-
-
 let elem_pause = document.getElementById("game_pause")
 elem_pause.addEventListener("click", switch_pause)
 
-
-let loop_interval = 25
-
 function game_loop(){
-    if(!document.game_paused){
+    if(document.game_over){
+        end_game()
+    }
+    else if(!document.game_paused){
         console.log("New Loop");
         let temp_gs = update_game(document.game_state)
         draw_game(temp_gs)
@@ -295,12 +270,84 @@ function game_loop(){
 function end_game(){
     clearInterval(tick_id)
     clearInterval(stats_tick_id)
+
+    game_ot.innerText = "Jogar Novamente?"
+
+    canvas.style.display  = 'none'
+    game_o.style.display  = 'flex'
+    game_ob.style.display = 'block'
+
+    document.game_paused   = false
+    document.game_reversed = false
+    document.game_state    = []
+    document.game_over     = false
+}
+
+function setup_game(){
+    n_pieces = {
+        h: 22,
+        w: 12
+    }
+
+    // Using this ration to make blocks more like squares
+    let ratio = n_pieces.w / n_pieces.h
+    dims = {
+        w: canvas.clientWidth*ratio,
+        h: canvas.clientHeight
+    }
+    canvas.setAttribute('width', dims.w)
+    canvas.setAttribute('height', dims.h)
+    console.log("Canvas: w:" + dims.w + " h:" + dims.h)
+
+    document.game_state = []
+    for (let i = 0; i < n_pieces.h; i++) {
+        document.game_state.push([])
+        for (let j = 0; j < n_pieces.w; j++) {
+            document.game_state[i].push(0)
+        }   
+    }
+
+    piece_iterator = piece_gen()
+    curr_piece     = piece_iterator.next().value
+    next_piece     = piece_iterator.next().value
+
+    game_stats = {
+        score: 0,
+        removed_lines: 0,
+        start_time: 0,
+        level: 1
+    }
+
+    stats_tick_id = setInterval(update_stats, 1000)
 }
 
 
+let tick_interval = 500
+let should_tick   = false
+let tick_id       = setInterval(()=> should_tick = true, tick_interval)
 
-game_stats.start_time = Date.now()
-game_loop()
+let loop_interval = 25
+
+
+let game_o  = document.getElementById('game_overlay')
+let game_ot = document.getElementById('game_overlay_text')
+let game_ob = document.getElementById('game_overlay_button')
+
+game_ot.addEventListener('click', () => {
+    canvas = document.getElementById("game_canvas")
+    ctx    = canvas.getContext("2d")
+
+    game_o.style.display = 'none'
+    canvas.style.display = 'inherit' 
+
+    setup_game()
+
+    game_stats.start_time = Date.now()
+    game_loop()
+})
+
+
+
 
 
 
