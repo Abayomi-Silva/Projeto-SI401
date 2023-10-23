@@ -1,16 +1,3 @@
-/*
-let piece_colors = [
-    "#5f6487", // Empty
-    "#f94144", // I 
-    "#F3722C", // square 
-    "#F8961E", // L
-    "#F9C74F", // mirror L
-    "#90BE6D", // T
-    "#43AA8B", // U
-    gradient   // Special piece 
-]
-*/
-
 const N_Orientations = 4;
 const Orientation = {
     Up: 0,

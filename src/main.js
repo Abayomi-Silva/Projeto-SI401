@@ -23,6 +23,7 @@ let game_stats = {
     level: 1
 }
 
+document.game_paused   = false
 document.game_reversed = false
 
 document.game_state = []
@@ -128,7 +129,6 @@ function remove_whole_lines(gs){
 
     for (let i = n_pieces.h-1; i >= 0; i--) {
         if(mask[i]){
-
             if(i === 0){
                 gs[i] = structuredClone(blank_line)
             }
@@ -211,6 +211,11 @@ function update_game(gs){
 }
 
 
+function switch_pause() {
+    document.game_paused = !document.game_paused
+    should_tick = false
+}
+
 
 document.addEventListener('keydown', function(event) {
     if (curr_piece == null){
@@ -220,31 +225,31 @@ document.addEventListener('keydown', function(event) {
     let ngs = structuredClone(document.game_state);
 
     if(!document.game_reversed){
-        if(event.key === "ArrowLeft") {
+        if(event.code === "ArrowLeft") {
             curr_piece.move(ngs, -1) 
         }
-        else if(event.key === "ArrowRight") {
+        else if(event.code === "ArrowRight") {
             curr_piece.move(ngs, 1) 
         }
-        else if(event.key === "ArrowUp") {
+        else if(event.code === "ArrowUp") {
             curr_piece.rotate(ngs, 1) // Sentido horário
         }
-        else if(event.key === "ArrowDown") {
+        else if(event.code === "ArrowDown") {
             curr_piece.rotate(ngs, -1) // Sentido anti-horário
         }
     }
     else{
-        if(event.key === "ArrowLeft") {
+        if(event.code === "ArrowLeft") {
             curr_piece.move(ngs, 1) 
         }
-        else if(event.key === "ArrowRight") {
+        else if(event.code === "ArrowRight") {
             curr_piece.move(ngs, -1) 
         }
-        else if(event.key === "ArrowUp") {
-            curr_piece.rotate(ngs, -1) // Sentido horário
+        else if(event.code === "ArrowUp") {
+            curr_piece.rotate(ngs, -1) // Sentido anti-horário
         }
-        else if(event.key === "ArrowDown") {
-            curr_piece.rotate(ngs, 1) // Sentido anti-horário
+        else if(event.code === "ArrowDown") {
+            curr_piece.rotate(ngs, 1) // Sentido horário
         }
     }
     
@@ -256,6 +261,9 @@ document.addEventListener('keydown', function(event) {
         }
         while(!ret.stopped)
     }
+    else if(event.code === "KeyP") {
+        switch_pause()
+    }
 });
 
 
@@ -265,19 +273,31 @@ let tick_id       = setInterval(()=> should_tick = true, tick_interval)
 
 let stats_tick_id = setInterval(update_stats, 1000)
 
-let min_interval = 25
+
+let elem_pause = document.getElementById("game_pause")
+elem_pause.addEventListener("click", switch_pause)
+
+
+let loop_interval = 25
 
 function game_loop(){
-    console.log("New Loop");
-    let temp_gs = update_game(document.game_state)
-    draw_game(temp_gs)
-    setTimeout(game_loop, min_interval)
+    if(!document.game_paused){
+        console.log("New Loop");
+        let temp_gs = update_game(document.game_state)
+        draw_game(temp_gs)
+        setTimeout(game_loop, loop_interval)
+    }
+    else {
+        setTimeout(game_loop, loop_interval*10)
+    }
 }
 
 function end_game(){
     clearInterval(tick_id)
     clearInterval(stats_tick_id)
 }
+
+
 
 game_stats.start_time = Date.now()
 game_loop()
