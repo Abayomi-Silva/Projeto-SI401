@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="styles/style.css">
         <link rel="icon" href="images/logo.ico">
 
-        <title>MT</title>
+        <title>MT Tetris</title>
     </head>
 
     <body>
@@ -20,38 +20,44 @@
 
                 <div class="info-box">
                     <label>Pontuação</label>
-                    <p class="lbl" id="pontuacao">1430</p>
+                    <p class="lbl" id="game_pontuacao">0</p>
                 </div>
 
                 <div class="info-box">
                     <label>Linhas Eliminadas</label>
-                    <p class="lbl" id="linhas-eliminadas">71</p>
+                    <p class="lbl" id="game_linhas_eliminadas">0</p>
                 </div>
 
                 <div class="info-box">
                     <label>Tempo</label>
-                    <p class="lbl" id="tempo">08:35</p>
+                    <p class="lbl" id="game_tempo">00:00</p>
                 </div>
 
                 <div class="info-box">
                     <label>Nível</label>
-                    <p class="lbl" id="nivel">4</p>
+                    <p class="lbl" id="game_nivel">1</p>
                 </div>
             </div>
 
-            <div class="center-box">
-                <img src="./images/tetrisjogo.png"
-                    alt="Imagem do jogo Tetris" id="tetris">
+             <div class="center-box border-fix">
+                <canvas class="game-window" style="display:none"
+                    alt="Imagem do jogo Tetris" id="game_canvas">
+                </canvas>
+
+                <div class="game-window" id="game_overlay">
+                    <p id="game_overlay_text">Iniciar</p>
+                    <button id="game_overlay_button">Publicar Score</button>
+                </div>
             </div>
 
             <div class="right-box">
                 <div class="next-block-box">
                     <h2>Próximo Bloco</h2>
-                    <img src="./images/blocoroxo.jpeg" id="proxbloc"
+                    <img src="./images/pieces/Special_piece.png" id="game_next_piece"
                         alt="Próximo Bloco">
                 </div>
 
-                <img src="./images/pause.jpg" id="pause" alt="Pause">
+                <img src="/images/pause.jpg" id="game_pause" alt="Pause">
                 <div class="botao">
                     <a href="Menu.html" class="button">Menu</a>
                 </div>
@@ -63,5 +69,7 @@
                 </div>
             </div>
         </div>
+        <script defer src="src/pieces.js"> </script>
+        <script defer src="src/main.js"> </script>
     </body>
 </html>
