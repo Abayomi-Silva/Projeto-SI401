@@ -2,8 +2,9 @@
     background-color: #000000;
     color: white;
     border-radius: 10px;
-    margin: 10px 3px 3px;
+    margin: -20px 3px 3px 3px;
 }
+
 .pop-up{
     background-color: #040C52;
     text-align: center;
@@ -11,35 +12,38 @@
     border-radius: 10px;
     width: 270px;
 }
+
 .info,p{
-    font-size: 25px;
-    text-align: center;
+    font-size: 24px;
     color: #f0f0f0;
-    align-items: center;
-    align-content: center;
-    padding: 10px;
+    padding: 3px;
 }
+
 .lbl{
     color: #ffffff;
     background-color: #1A258B;
-    padding: 5px 15px;
+    padding: 3px 30px;
+    margin: 2px 60px;
+    border-radius: 10px;
 }
-#logout{
-    background-color: #6572E3; 
-}
+
 .checkboxes {
     background-color: #1A258B;
     display: inline-block;
     border-radius: 10px;
     width: 96%;
 }
+
 .toggle {
    color: #ffffff;
-   margin: 1px 1px 6px;
+   margin: 5px 1px 10px;
+   padding: 5px;
 }
+
 .toggle > input {
     display: none;
 }
+
 .toggle > label {
     right: -20px;
     position: relative;
@@ -51,6 +55,7 @@
     justify-content: center;
     transition: all 0.3s ease;
 }
+
 .toggle > label:after {
     position: absolute;
     left: -2px;
@@ -64,13 +69,34 @@
     content: '';
     transition: all 0.3s ease;
 }
+
 .toggle > label:active:after {
     transform: scale(1.15, 0.85);
 }
+
 .toggle > input:checked ~ label {
     background: #02ee5c;
 }
+
 .toggle > input:checked ~ label:after {
     left: 30px;
     background: #ebdfdf;
 }
+
+img#sair{
+    width: 30px;
+    height: 30px;
+    border-radius: 30px; 
+ }
+
+ a{
+     display: flex;
+     flex-direction: row-reverse;
+ }
+ 
+ footer{
+    color: #f0f0f0;
+    border: solid 2px #0f101f;
+    border-radius: 10px;
+    font-size: 9px;
+ }

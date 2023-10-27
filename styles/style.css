@@ -1,3 +1,20 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    overflow: hidden;
+    text-align: center; 
+}
+
+.background {
+    background-image: url('../images/background.gif');
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4; 
+    z-index: -1;
+}
+
 .logo img {
     width: 45vw;
     height: 50vh;
@@ -6,12 +23,14 @@
     border-radius: 10px;
     align-items: center;
 }
+
 #logoMenor {
     width: 36vw ;
-    height: 29vh;
+    height: 27vh;
     border-radius: 10px;
     text-align: center;
 }
+
 .input-form{
     height: 15px;
     width: 30vw;
@@ -20,8 +39,16 @@
     font-size: 20px;
     margin: 2px 1px 7px;
     border-radius: 10px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+::placeholder{
+    color: #000000;
+}
+
+input[disabled]::placeholder{
+    color: #9ba7a0;
+}
+
 input[disabled] {
     background-color: #f7f7f7;
     cursor: not-allowed;
@@ -30,10 +57,63 @@ input[disabled] {
     margin-left: 15px;
     float: left;
 }
+
 .locked{
     align-items: center;
     display: inline-flex;
 }
+
 .fa-lock{
     color: rgb(255, 0, 0);
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.botao{
+    place-items: center;
+    color: #1A258B;
+}
+
+.button {
+    align-content: center;
+    width: 200px;
+    height: 40px;
+    font-size: 22px;
+    background-color: #1A258B;
+    color: white;
+    display: inline-grid;
+    border-radius: 10px;
+    padding: 2px;
+    margin: 5px;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #0e6ead;
+    cursor: grab;
+}
+
+.container ul{
+    list-style-type: none;
+    background-color: #1A258B;
+    display: inline-block;
+    border-radius: 10px;
+    width: 85%;  
+}
+.voltar, .sair{
+    background-color: #0a5283;
+}
+
+.voltar:hover{
+    background-color: #087033;
+ }
+
+ .sair:hover{
+    background-color: #b10521;
+ }
+ 
