@@ -1,49 +1,80 @@
-html, body, p{
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-.background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.4; 
-    z-index: -1;
-}
 .container {
     display: flex;
     justify-content: space-between;
     height: 100vh;
 }
+
 .left-box {
-    flex: 1;
-    margin: 2px;
+    padding: 4px;
+    height: 100vh;
+    margin: 0 30px 0px 30px;
     opacity: 0.97;
+    background-color: #5f6487;
 }
+
 .right-box {
-    flex: 1;
-    margin: 2px;
+    padding: 20px;
+    margin-right: 55px;
+    margin-left: 20px;
     opacity: 0.97;
+    background-color: #5f6487;
 }
+
 .info-box {
     border-radius: 10px;
     background-color: #040C52;
-    padding: 4px;
+    padding: 10px;
     margin-bottom: 20px;
     text-align: center;
-    margin-top: 1px;
+    margin-top: 10px;
+    font-size: 20px;
 }
-.info-box h2 {
-    margin-top: 0;
-}
+
 .center-box {
     flex: 2;
     text-align: center;
 }
+
+.border-fix{
+    padding: 1%; 
+    background-color: #32168f;
+}
+
+.game-window{
+    width: 100%;
+    height: 100%;
+}
+
+#game_overlay{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+#game_overlay_text{
+    width: 60%;
+    align-self: center;
+    padding: 5%;
+    border-radius: 100px;
+}
+
+#game_overlay_button{
+    display: none;
+    font-size: 30px;
+    width: 70%;
+    align-self: center;
+    margin: 20px 0;
+    padding: 5%;
+    border-radius: 100px;
+    border: 0;
+    background-color: #45548B ;
+    color: #f0f0f0
+}
+
 .next-block-box, .control {
+    height: 170px;
+    padding: 10px;
     text-align: center;
     margin: 15px 10px 35px 10px;
     background-color: #32168f;
@@ -54,59 +85,49 @@ html, body, p{
     padding: 10px;
     text-align: center;
 }
-h2{
+
+label, h2{
     color: #f0f0f0;
-    height: 9%;
+    height: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+h2{
+    margin: 10px;
+    padding: 2px;
+} 
+
 p{
     background-color: #45548B;
     color: #f0f0f0;
-    border-radius: 10px;
+    border-radius: 4px;
+    padding: 5px;
     font-size: 30px;
+    margin: 2px;
 }
-.button {
-    align-content: center;
-    width: 300px;
-    height: 40px;
-    font-size: 25px;
-    background-color: #1A258B;
-    color: white;
-    display: inline-grid;
-    border-radius: 10px;
-    margin: 15px 5px 25px 5px;
-    text-decoration: none;
-}
-.button:hover {
-    background-color: #0e6ead;
-    cursor: grab;
-}
+
 #logo{
-    width: 300px;
-    height: 140px;
-    margin-bottom: 10px;
+    width: 20vw;
+    height: 23vh;
+    margin-bottom: 20px;
 }
-#tetris{
-    width: 80%;
-    height: 99vh;
-}
-#proxbloc{
-    width: 120px;
-    height: 120px;
-}
-#pause{
+
+#game_pause{
     border-radius: 85px;
-    width: 60px;
-    height: 60px;
+    width: 6vw;
     margin-bottom: 10px;
     cursor: grab;
 }
+
+#game_next_piece{
+    height: 18vh;
+}
+
 #controles{
-    width: 100px;
-    height: 100px;
-    margin-top: 5px;
+    width: 21vw;
+    height: 18vh;
+    margin-top: 20px;
 }
