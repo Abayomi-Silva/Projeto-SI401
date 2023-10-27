@@ -260,14 +260,12 @@ function game_loop(){
         end_game()
     }
     else if(!document.game_paused){
-        
         console.log("New Loop");
         let temp_gs = update_game(document.game_state)
         draw_game(temp_gs)
         setTimeout(game_loop, loop_interval)
     }
     else {
-
         setTimeout(game_loop, loop_interval*10)
     }
 }
