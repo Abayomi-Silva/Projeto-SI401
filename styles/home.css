@@ -9,7 +9,7 @@
     height: 100vh;
     margin: 0 30px 0px 30px;
     opacity: 0.97;
-    background-color: #5f6487;
+    background-color: #040C52;
 }
 
 .right-box {
@@ -123,7 +123,7 @@ p{
 }
 
 #game_next_piece{
-    height: 18vh;
+    height: 200px;
 }
 
 #controles{
