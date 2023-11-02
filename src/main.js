@@ -288,8 +288,8 @@ function end_game(){
 
 function setup_game(){
     n_pieces = {
-        h: 22,
-        w: 12
+        h: 20,
+        w: 10
     }
 
     // Using this ration to make blocks more like squares
