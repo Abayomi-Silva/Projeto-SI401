@@ -93,109 +93,108 @@ function* piece_gen(){
 }
 
 function remove_whole_lines(gs){
-    let mask = gs.map(col => col.reduce((acc, curr) => curr==0 ? acc : acc+1, 0))
-    mask     = mask.map(sum => sum===n_pieces.w ? true : false)
+    let mask = gs.map(col => col.reduce((acc, curr) => curr==0 ? acc : acc+1, 0));
+    mask     = mask.map(sum => sum===n_pieces.w ? true : false);
 
-    let blank_line = []
+    let blank_line = [];
     for (let j = 0; j < n_pieces.w; j++) {
-        blank_line.push(0)
+        blank_line.push(0);
     } 
 
-    let specials_removed = 0
+    let specials_removed = 0;
 
     for (let i = n_pieces.h-1; i >= 0; i--) {
         if(mask[i]){
             if(i === 0){
-                gs[i] = structuredClone(blank_line)
+                gs[i] = structuredClone(blank_line);
             }
             else{
-                specials_removed += gs[i].reduce((acc, curr) => curr===7 ? acc+1 : acc, 0)
+                specials_removed += gs[i].reduce((acc, curr) => curr===7 ? acc+1 : acc, 0);
 
-                gs.splice(i, 1)
-                gs.unshift(structuredClone(blank_line))
+                gs.splice(i, 1);
+                gs.unshift(structuredClone(blank_line));
                 
                 // This is necessary because the line that
                 // "dropped" wasn't checked yet
-                mask.unshift(false)
-                i++
+                mask.unshift(false);
+                i++;
             }
         }
     }
 
     if(specials_removed%2 == 1){
-        document.game_reversed = !document.game_reversed
-
-        gs = gs.map((col) => col.reverse())
+        document.game_reversed = !document.game_reversed;
+        gs = gs.map((col) => col.reverse());
     } 
 
-    let lines_removed = mask.reduce((acc, curr) => curr? acc+1 : acc, 0)
-    game_stats.removed_lines += lines_removed
-    game_stats.score         += 10 * (lines_removed**2)
+    let lines_removed = mask.reduce((acc, curr) => curr? acc+1 : acc, 0);
+    game_stats.removed_lines += lines_removed;
+    game_stats.score         += 10 * (lines_removed**2);
 
-    return gs
+    return gs;
 }
 
 function update_stats() {
-    let elem_score         = document.getElementById("game_pontuacao")
-    let elem_removed_lines = document.getElementById("game_linhas_eliminadas")
-    let elem_elapsed_time  = document.getElementById("game_tempo")
-    let elem_level         = document.getElementById("game_nivel")
+    let elem_score         = document.getElementById("game_pontuacao");
+    let elem_removed_lines = document.getElementById("game_linhas_eliminadas");
+    let elem_elapsed_time  = document.getElementById("game_tempo");
+    let elem_level         = document.getElementById("game_nivel");
 
-    let elapsed_time  = Date.now() - game_stats.start_time
+    let elapsed_time  = Date.now() - game_stats.start_time;
     let formated_time = (new Date(value=elapsed_time))
-                            .toLocaleTimeString("pt-BR", options={minute: "numeric", second:"numeric"}) 
+                            .toLocaleTimeString("pt-BR", options={minute: "numeric", second:"numeric"});
 
-    clearInterval(tick_id)
-    game_stats.level = Math.floor(game_stats.score/300)
-    let new_interval = tick_interval - game_stats.level * 100
-    tick_id = setInterval(()=> should_tick = true, new_interval)
+    clearInterval(tick_id);
+    game_stats.level = Math.floor(game_stats.score/300);
+    let new_interval = tick_interval - game_stats.level * 100;
+    tick_id = setInterval(()=> should_tick = true, new_interval);
 
 
-    elem_score.innerText         = game_stats.score
-    elem_removed_lines.innerText = game_stats.removed_lines
-    elem_elapsed_time.innerText  = formated_time
-    elem_level.innerText         = game_stats.level + 1 // So that it starts on 1
+    elem_score.innerText         = game_stats.score;
+    elem_removed_lines.innerText = game_stats.removed_lines;
+    elem_elapsed_time.innerText  = formated_time;
+    elem_level.innerText         = game_stats.level + 1; // So that it starts on 1
 
 }
 
 function update_game(gs){
     let ngs = structuredClone(gs);
     
-    let is_new_piece = false
-    let drop = false
+    let is_new_piece = false;
+    let drop = false;
     if (curr_piece == null){
-        is_new_piece  = true
-        curr_piece    = next_piece
-        next_piece    = piece_iterator.next().value
+        is_new_piece  = true;
+        curr_piece    = next_piece;
+        next_piece    = piece_iterator.next().value;
 
-        img_next_piece.src = "./images/pieces/" + next_piece.file_name
+        img_next_piece.src = "./images/pieces/" + next_piece.file_name;
         
         // This is so that new pieces don't immediately drop
-        should_tick   = false
+        should_tick   = false;
     }
     else if (should_tick){
-        should_tick = false
-        drop = true
+        should_tick = false;
+        drop = true;
     }
 
-    let ret = curr_piece.tick(ngs, drop) 
+    let ret = curr_piece.tick(ngs, drop);
 
     if (ret.stopped){
         if (is_new_piece){
             // If a new piece is created and it is immediately 
             // stopped, the player loses
-            document.game_over = true
+            document.game_over = true;
         }
         else{
-        document.game_state = ret.ngs
-        curr_piece = null
+        document.game_state = ret.ngs;
+        curr_piece = null;
 
-        ret.ngs = remove_whole_lines(ret.ngs)
-        should_tick = false
+        ret.ngs = remove_whole_lines(ret.ngs);
+        should_tick = false;
         }
     }
 
-    return ret.ngs
+    return ret.ngs;
 }
 
 function switch_pause() {
