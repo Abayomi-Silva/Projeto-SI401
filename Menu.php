@@ -13,7 +13,7 @@
         <div class="background"></div>
 
         <div class="pop-up">
-            <a href="Home.html"><img src="./images/fechar.png" alt="Sair"
+            <a href="Home.php"><img src="./images/fechar.png" alt="Sair"
                     id="sair"></a>
             <div class="menu">
                 <h1>MENU</h1>
@@ -34,18 +34,18 @@
 
             <div class="botao">
                 <nav>
-                    <a href="Home.html" class="button voltar">Voltar</a>
+                    <a href="Home.php" class="button voltar">Voltar</a>
                 </nav>
 
                 <nav>
-                    <a href="Ranking_class_pessoal.html" class="button">Ranking Pessoal</a>
+                    <a href="Ranking_class_pessoal.php" class="button">Ranking Pessoal</a>
                 </nav>
 
                 <nav>
-                    <a href="Editar_perfil.html" class="button">Editar Perfil</a>
+                    <a href="Editar_perfil.php" class="button">Editar Perfil</a>
                 </nav>
 
-                <a href="index.html" class="button sair" id="logout">Logout</a>
+                <a href="backend/logout.php" class="button sair" id="logout">Logout</a>
             </div>
 
             <footer>Tetris - Grupo 07</footer>
