@@ -286,10 +286,26 @@ function end_game(){
 }
 
 function setup_game(){
-    n_pieces = {
-        h: 20,
-        w: 10
+    let temp = sessionStorage.getItem('game_mode_classic')
+
+    temp === null ? temp = "true" : () => {}
+
+    if( temp === "true"){ // Modo Clássico
+        n_pieces = {
+            h: 20,
+            w: 10
+        }
     }
+    else{ // Modo Avançado
+        n_pieces = {
+            h: 44,
+            w: 22
+        }
+    }
+
+
+
+
 
     // Using this ration to make blocks more like squares
     let ratio = n_pieces.w / n_pieces.h
