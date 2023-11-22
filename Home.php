@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['usuario'])){
+        header("location:index.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt">
     <head>
@@ -60,7 +66,7 @@
 
                 <img src="./images/pause.jpg" id="game_pause" alt="Pause">
                 <div class="botao">
-                    <a href="Menu.html" class="button">Menu</a>
+                    <a href="Menu.php" class="button">Menu</a>
                 </div>
 
                 <div class="control">

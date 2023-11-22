@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt">
     <head>
@@ -17,7 +20,7 @@
         </div>
 
         <div class="login">
-            <form method="POST" action="login.php">
+            <form method="POST" action="backend/login.php">
                 <input type="text" class="input-form" id="usuario"
                     name="userLogin" placeholder="Usuário" required>
 
@@ -30,7 +33,7 @@
         </div>
 
         <div class="botao">
-            <a href="cadastro.html" class="button">Cadastrar</a>
+            <a href="cadastro.php" class="button">Cadastrar</a>
         </div>
     </body>
 </html>

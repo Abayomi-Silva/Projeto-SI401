@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['usuario'])){
+        header("location:index.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt">
     <head>
@@ -76,7 +82,7 @@
             </form>
 
             <div class="botao">
-                <a href="Menu.html" class="button">Voltar</a>
+                <a href="Menu.php" class="button">Voltar</a>
             </div>
 
         </div>
