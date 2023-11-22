@@ -17,15 +17,15 @@
         </div>
 
         <div class="login">
-            <form>
+            <form method="POST" action="login.php">
                 <input type="text" class="input-form" id="usuario"
-                    name="input" placeholder="Usuário" required>
+                    name="userLogin" placeholder="Usuário" required>
 
                 <input type="password" class="input-form" id="senha"
-                    name="input" placeholder="Senha" required>
+                    name="userPwd" placeholder="Senha" required>
 
                 <input type="submit" class="button" id="enviar"
-                    value="Enviar">
+                    value="Enviar" name="login">
             </form>
         </div>
 
