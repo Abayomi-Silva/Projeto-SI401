@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['usuario'])){
+        header("location:index.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt">
     <head>
@@ -12,7 +18,7 @@
     <body>
         <div class="background"></div>
         <div class="pop-up">
-            <a href="Home.html"><img src="./images/fechar.png" alt="Sair"
+            <a href="Home.php"><img src="./images/fechar.png" alt="Sair"
                     id="sair"></a>
             <div class="menu">
                 <h1>GAME OVER</h1>
@@ -38,7 +44,7 @@
                 <p class="lbl">4</p>
             </div>
 
-            <a href="Login.html" class="button sair" id="logout">Logout</a>
+            <a href="Login.php" class="button sair" id="logout">Logout</a>
 
             <footer>Tetris - Grupo 07</footer>
         </div>

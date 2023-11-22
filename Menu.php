@@ -23,8 +23,8 @@
                 <p>Modo de Jogo</p>
                 <div class="toggle">
                     <div class="toggle">
-                        <input type="radio" id="toggle_modo_classico" name="on-off" checked>Clássico
-                        <label for="toggle_modo_classico">ON|OFF</label>
+                        <input type="radio" id="bar" name="on-off" checked>Clássico
+                        <label for="bar">ON|OFF</label>
                     </div>
 
                     <input type="radio" name="on-off" id="foo">Avançado
@@ -34,7 +34,7 @@
 
             <div class="botao">
                 <nav>
-                    <a href="Home.html" class="button voltar" onclick="register_mode()">Voltar</a>
+                    <a href="Home.html" class="button voltar">Voltar</a>
                 </nav>
 
                 <nav>
@@ -50,13 +50,6 @@
 
             <footer>Tetris - Grupo 07</footer>
         </div>
-        <script>
-            function register_mode() {
-                const toggle_classico = document.getElementById('toggle_modo_classico')
-
-                sessionStorage.setItem('game_mode_classic', toggle_classico.checked);
-            }
-        </script>
 
     </body>
 </html>

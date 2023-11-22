@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['usuario'])){
+        header("location:index.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt">
     <head>
@@ -14,19 +20,19 @@
         <div class="background"></div>
 
         <nav>
-            <div class="botao"><a href="Ranking_class_global.html"
+            <div class="botao"><a href="Ranking_class_pessoal.html"
                     class="button">Modo Clássico</a>
             </div>
         </nav>
-
         <nav>
-            <div class="botaorank"><a href="Ranking_avan_pessoal.html"
+            <div class="botaorank">
+                <a href="Ranking_avan_pessoal.html"
                     class="btrank">Modo Avançado</a>
             </div>
         </nav>
 
         <div class="table">
-            <h1>Ranking Global Avançado</h1>
+            <h1>Ranking Pessoal Avançado</h1>
 
             <table>
                 <tr>
@@ -38,76 +44,77 @@
                 </tr>
                 <tr>
                     <td>1</td>
-                    <td>Tamires</td>
-                    <td>9890</td>
-                    <td>33</td>
-                    <td>67:54</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Anthony</td>
-                    <td>9720</td>
-                    <td>33</td>
-                    <td>65:32</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Leticia</td>
-                    <td>9560</td>
-                    <td>32</td>
-                    <td>67:28</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Barbara</td>
-                    <td>8930</td>
-                    <td>30</td>
-                    <td>62:57</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Antônia</td>
-                    <td>8650</td>
-                    <td>29</td>
-                    <td>56:48</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Raphinha</td>
-                    <td>8310</td>
-                    <td>28</td>
-                    <td>64:11</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Gabriel.J.</td>
-                    <td>7890</td>
-                    <td>27</td>
-                    <td>54:58</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>Rafaelle</td>
-                    <td>7250</td>
-                    <td>25</td>
-                    <td>53:12</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>Militão</td>
-                    <td>7240</td>
-                    <td>25</td>
-                    <td>56:21</td>
-                </tr>
-                <tr>
-                    <td>10</td>
                     <td>Joãozinho</td>
                     <td>7050</td>
                     <td>24</td>
-                    <td>44:40</td>
+                    <td>44:30</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>João</td>
+                    <td>6840</td>
+                    <td>23</td>
+                    <td>42:43</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>João</td>
+                    <td>6800</td>
+                    <td>23</td>
+                    <td>41:13</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Joãozinho</td>
+                    <td>6430</td>
+                    <td>22</td>
+                    <td>44:04</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>João</td>
+                    <td>6260</td>
+                    <td>21</td>
+                    <td>39:24</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>João</td>
+                    <td>5670</td>
+                    <td>18</td>
+                    <td>37:30</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Joãozinho</td>
+                    <td>5190</td>
+                    <td>18</td>
+                    <td>38:27</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>João</td>
+                    <td>4780</td>
+                    <td>16</td>
+                    <td>36:01</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>João</td>
+                    <td>4550</td>
+                    <td>16</td>
+                    <td>33:32</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>João</td>
+                    <td>4120</td>
+                    <td>14</td>
+                    <td>34:25</td>
                 </tr>
             </table>
-            <h2>Melhor Pontuação</h2>
+            <br>
+            <br>
             <table>
                 <tr>
                     <th>N°</th>
@@ -117,19 +124,19 @@
                     <th>TEMPO</th>
                 </tr>
                 <tr>
-                    <td>10</td>
+                    <td>1</td>
                     <td>Joãozinho</td>
                     <td>7050</td>
                     <td>24</td>
-                    <td>44:40</td>
+                    <td>44:30</td>
                 </tr>
             </table>
+            <br>
             <br>
         </div>
 
         <nav class="botao">
-            <a href="Ranking_avan_pessoal.html"
-                class="button">Ranking Pessoal</a>
+            <a href="Ranking_avan_global.html" class="button">Ranking Global</a>
         </nav>
 
         <nav class="botao">

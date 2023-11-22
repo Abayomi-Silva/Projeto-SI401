@@ -1,10 +1,11 @@
 <?php
+    session_start();
     // Crie um banco de dados local chamado Tetris, Banco de dados criado a partir do MySql do XAMPP por isso não há senha
     $server = "localhost";
     $user = "root";
     $password = "";
-    $database = "Tetris";
-
+    $database = "tetris";
+    global $connection;
     try{
         $connection = new PDO("mysql:host=$server;dbname=$database", $user, $password);
         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
