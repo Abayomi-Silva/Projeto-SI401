@@ -41,6 +41,27 @@
                     <th>NÍVEL</th>
                     <th>TEMPO</th>
                 </tr>
+                    <?php /*
+                    $sql_rankclass_p = "SELECT * FROM ranking INNER JOIN usuarios on ranking.userPlayer = usuarios.usuario WHERE usuarios.usuario = {'$_SESSION['usuario']'} ORDER BY pontuacao DESC LIMIT 10";
+                    include("backend/conexao.php");
+                    try {
+                        $stmt = $connection->prepare($sql_rankclass_p);
+                        $stmt->execute();
+                        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    } catch (PDOException $e) {
+                        echo "Erro na consulta: " . $e->getMessage();
+                    }
+                    $contador=1;
+                    ?>
+                    <?php foreach ($result as $row): ?>
+                        <tr>
+                            <td><?php echo $contador++; ?></td>
+                            <td><?php echo $row['nome']; ?></td>
+                            <td><?php echo $row['pontuacao']; ?></td>
+                            <td><?php echo $row['nivel']; ?></td>
+                            <td><?php echo $row['tempoPartida']; ?></td>
+                        </tr>
+                    <?php endforeach;  */ ?> 
                 <tr>
                     <td>1</td>
                     <td>João</td>

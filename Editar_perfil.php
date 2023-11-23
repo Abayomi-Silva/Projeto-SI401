@@ -25,7 +25,7 @@
         </div>
 
         <div class="login">
-            <form>
+            <form action="backend/updatePerfil.php" method="POST">
                 <div class="form-group">
                     <input type="text" class="input-form" id="nome"
                         name="nome" placeholder="Nome Completo" required>
@@ -76,7 +76,7 @@
                 <div class="position-botao">
                     <div class="botao">
                         <input type="submit" class="button" id="atualizar"
-                            value="Atualizar">
+                            value="Atualizar" name="updatePerfil">
                     </div>
                 </div>
             </form>

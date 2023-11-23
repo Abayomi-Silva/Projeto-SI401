@@ -20,13 +20,13 @@
         <div class="background"></div>
 
         <nav>
-            <div class="botao"><a href="Ranking_class_pessoal.html"
+            <div class="botao"><a href="Ranking_class_pessoal.php"
                     class="button">Modo Clássico</a>
             </div>
         </nav>
         <nav>
             <div class="botaorank">
-                <a href="Ranking_avan_pessoal.html"
+                <a href="Ranking_avan_pessoal.php"
                     class="btrank">Modo Avançado</a>
             </div>
         </nav>
@@ -42,6 +42,27 @@
                     <th>NÍVEL</th>
                     <th>TEMPO</th>
                 </tr>
+                <?php /*
+                    $sql_rankclass_p = "SELECT * FROM ranking INNER JOIN usuarios on ranking.userPlayer = usuarios.usuario WHERE usuarios.usuario = {'$_SESSION['usuario']'} ORDER BY pontuacao DESC LIMIT 10";
+                    include("backend/conexao.php");
+                    try {
+                        $stmt = $connection->prepare($sql_rankclass_p);
+                        $stmt->execute();
+                        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    } catch (PDOException $e) {
+                        echo "Erro na consulta: " . $e->getMessage();
+                    }
+                    $contador=1;
+                    ?>
+                    <?php foreach ($result as $row): ?>
+                        <tr>
+                            <td><?php echo $contador++; ?></td>
+                            <td><?php echo $row['nome']; ?></td>
+                            <td><?php echo $row['pontuacao']; ?></td>
+                            <td><?php echo $row['nivel']; ?></td>
+                            <td><?php echo $row['tempoPartida']; ?></td>
+                        </tr>
+                    <?php endforeach;  */ ?> 
                 <tr>
                     <td>1</td>
                     <td>Joãozinho</td>
@@ -136,11 +157,11 @@
         </div>
 
         <nav class="botao">
-            <a href="Ranking_avan_global.html" class="button">Ranking Global</a>
+            <a href="Ranking_avan_global.php" class="button">Ranking Global</a>
         </nav>
 
         <nav class="botao">
-            <a href="Home.html" class="button">Home</a>
+            <a href="Home.php" class="button">Home</a>
         </nav>
     </body>
 </html>
